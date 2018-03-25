@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazer Arena.Plugins", "Laze
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazer Arena", "Lazer Arena.csproj", "{17056B94-9EE9-9AB1-8AEB-655C200E35A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazer Arena.Editor.Plugins", "Lazer Arena.Editor.Plugins.csproj", "{BD96BF8F-7103-E02C-D2A4-DC51D9DC206A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{17056B94-9EE9-9AB1-8AEB-655C200E35A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17056B94-9EE9-9AB1-8AEB-655C200E35A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17056B94-9EE9-9AB1-8AEB-655C200E35A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD96BF8F-7103-E02C-D2A4-DC51D9DC206A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD96BF8F-7103-E02C-D2A4-DC51D9DC206A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD96BF8F-7103-E02C-D2A4-DC51D9DC206A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD96BF8F-7103-E02C-D2A4-DC51D9DC206A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
