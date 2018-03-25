@@ -41,7 +41,7 @@ public class CharacterControl : MonoBehaviour
     void FixedUpdate()
     {
         ///
-        /// First we will calculate the speedMulplier 
+        /// First we will calculate the speedMultiplier 
         ///
 
 
