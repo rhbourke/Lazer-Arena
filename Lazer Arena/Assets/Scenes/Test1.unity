@@ -516,7 +516,7 @@ MonoBehaviour:
   transitDurToWalk: 1
   personalSpeed: 10
   sprintMultiplier: 1.5
-  diagSpeed: 2.11
+  diagSpeed: 1.5
   canJump: 1
   jumpHeight: 2
   jumpGravity: 7
@@ -527,8 +527,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606594957}
   serializedVersion: 2
-  m_Mass: 5000
-  m_Drag: 0.1
+  m_Mass: 100000
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
