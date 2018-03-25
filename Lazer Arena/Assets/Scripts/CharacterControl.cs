@@ -9,6 +9,7 @@ public class CharacterControl : MonoBehaviour
     Rigidbody PlayerRB;
 
     [Header("FOV")]
+
     public float startFOV;
     public float sprintFOV;
     public float transitDurToSprint;
@@ -17,10 +18,14 @@ public class CharacterControl : MonoBehaviour
     [Space]
 
     [Header("Movement")]
-    public float personalSpeed = 10.0f; // The speed this character should travel at by default. *This* variable should be adjusted based on class.
+
+    public float personalSpeed = 10.0f; // The speed this character should travel at by default -- *This* variable should be adjusted based on class.
 
     [Range(1.2f, 3f)]
     public float sprintMultiplier = 1.5f;
+
+    [Range(1.5f, 3f)]
+    public float diagSpeed; // The divider by which the character should travel diagonally
 
 
     float speedMultiplier; 
@@ -69,7 +74,7 @@ public class CharacterControl : MonoBehaviour
             if (((Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.A))) && IsGrounded()))
             {
                 // Slow down while going diagonal
-                speedMultiplier = personalSpeed / 2;
+                speedMultiplier = personalSpeed / diagSpeed;
             }
             else
                 speedMultiplier = personalSpeed;
