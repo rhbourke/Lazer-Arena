@@ -27,6 +27,9 @@ public class CharacterControl : MonoBehaviour
     [Range(1.5f, 3f)]
     public float diagSpeed; // The divider by which the character should travel diagonally
 
+    [Range(1.1f, 1.5f)]
+    public float airDrag = 1.3f;
+
     float speedMultiplier; 
     public bool canJump = true;
     public static float jumpHeight = 5.0f;
@@ -74,6 +77,12 @@ public class CharacterControl : MonoBehaviour
 
         // Store Y Vector
         prevY = moveDirection.y;
+
+        if (!charControl.isGrounded)
+        {
+            moveDirection.x = moveDirection.x / airDrag;
+            moveDirection.z = moveDirection.z / airDrag;
+        }
 
         // Apply target movement
         charControl.Move(moveDirection * Time.deltaTime);
