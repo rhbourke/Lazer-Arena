@@ -29,7 +29,7 @@ public class CharacterControl : MonoBehaviour
 
     float speedMultiplier; 
     public bool canJump = true;
-    public static float jumpHeight = 4.0f;
+    public static float jumpHeight = 5.0f;
     public float gravity;
 
     float prevY;
@@ -54,12 +54,12 @@ public class CharacterControl : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, 0, Input.GetAxis("Vertical") * speedMultiplier * 10);
         moveDirection.y = prevY;
         if (charControl.isGrounded) {
+            moveDirection.y = 0.0f;
             prevY = 0.0f;
             moveDirection = transform.TransformDirection(moveDirection);
             if (canJump && Input.GetKeyDown(KeyCode.Space))
             {
                 // Jump
-                Debug.Log("Jumped");
                 moveDirection.y = jumpHeight;
             }
         }

@@ -34,10 +34,10 @@ public class Powerup : MonoBehaviour {
         // Stores original speeds before boosting them
         origSpeed = CharacterControl.personalSpeed;
         origHeight = CharacterControl.jumpHeight;
+
         Collider = GetComponent<Collider>();
 
-
-        // Defaults to speed boost if no type is set
+        // Defaults to type speed boost if no type is set
         if(!SpeedBoost && !JumpBoost)
         {
             SpeedBoost = true;
@@ -65,12 +65,13 @@ public class Powerup : MonoBehaviour {
             JumpBoost = false;
         }
 	}
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
         if (active)
         {
-            if (collision.collider.gameObject.transform.parent.GetComponent<CharacterControl>() != null) // If player collides with this 
+            if (collider.gameObject.tag == "Player")
             {
+                Debug.Log("Collided with Player");
                 if (SpeedBoost) // If this is a speed boost
                 {
                     // Give speed boost 
