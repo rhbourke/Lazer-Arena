@@ -19,7 +19,7 @@ public class CharacterControl : MonoBehaviour
 
     [Header("Movement")]
 
-    public float personalSpeed = 10.0f; // The speed this character should travel at by default -- *This* variable should be adjusted based on class.
+    public static float personalSpeed = 10.0f; // The speed this character should travel at by default -- *This* variable should be adjusted based on class.
 
     [Range(1.2f, 3f)]
     public float sprintMultiplier = 1.5f;
@@ -27,11 +27,10 @@ public class CharacterControl : MonoBehaviour
     [Range(1.5f, 3f)]
     public float diagSpeed; // The divider by which the character should travel diagonally
 
-
     float speedMultiplier; 
 
     public bool canJump = true;
-    public float jumpHeight = 2.0f;
+    public static float jumpHeight = 2.0f;
     public float jumpGravity = 10.0f;
 
     void Awake()
