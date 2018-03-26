@@ -5,6 +5,17 @@ using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
 {
+    public enum Class 
+    {
+        Scout,
+        Tank,
+        Support
+        // Add classes here
+    }
+    public Class myClass;
+
+    [Space]
+
     Camera PlayerCam;
 
     [Header("FOV")]
@@ -16,11 +27,13 @@ public class CharacterControl : MonoBehaviour
 
     [Space]
 
-    [Header("Movement")]
-
     CharacterController charControl;
-    public static float personalSpeed = 1.0f; // The speed this character should travel at by default -- *This* variable should be adjusted based on class.
 
+    
+    public static float personalSpeed = 1.0f; // The speed this character should travel at by default -- This variable is adjusted by speed boost and class type.
+
+    
+    [Header("Movement")]
     [Range(1.2f, 3f)]
     public float sprintMultiplier = 1.5f;
 
@@ -36,58 +49,39 @@ public class CharacterControl : MonoBehaviour
     public float gravity;
 
     float prevY;
+    Vector3 moveDirection;
 
-    void Awake()
+    // Add boost bools here. (True if the boost is being used by player)
+    public static bool jumpBoosted = false;
+    public static bool speedBoosted = false;
+
+    void Start()
     {
+        // Set references and defaults
         PlayerCam = gameObject.GetComponentInChildren<Camera>();
         PlayerCam.fieldOfView = startFOV;
         speedMultiplier = personalSpeed;
-    }
-    void Start()
-    {
         charControl = GetComponent<CharacterController>();
     }
     void Update()
     {
-        
+        // Update variables based on class
+        UpdateClass();
+
+        // Check if any boosts are active, and use these multipliers
+        BoostCheck();
+
+        Debug.Log("Speed = " + personalSpeed);
+        Debug.Log("Jump Height = " + jumpHeight);
+
         // Calculate multiplier based on current movement conditions(sprinting, diagonal movement... etc)
         CalculateSpeedMultiplier();
 
         // Calculate target movement 
-        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, 0, Input.GetAxis("Vertical") * speedMultiplier * 10);
-        moveDirection.y = prevY;
-        if (charControl.isGrounded) {
-            moveDirection.y = 0.0f;
-            prevY = 0.0f;
-            moveDirection = transform.TransformDirection(moveDirection);
-            if (canJump && Input.GetKeyDown(KeyCode.Space))
-            {
-                // Jump
-                moveDirection.y = jumpHeight;
-            }
-        }
-        else
-        {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, moveDirection.y, Input.GetAxis("Vertical") * speedMultiplier * 10);
-            moveDirection = transform.TransformDirection(moveDirection);
-        }
-        
-        // Apply Gravity
-        moveDirection.y += gravity * Time.deltaTime;
-
-        // Store Y Vector
-        prevY = moveDirection.y;
-
-        if (!charControl.isGrounded)
-        {
-            moveDirection.x = moveDirection.x / airDrag;
-            moveDirection.z = moveDirection.z / airDrag;
-        }
+        CalculateMovement();
 
         // Apply target movement
         charControl.Move(moveDirection * Time.deltaTime);
-        
-
     }
 
     void CalculateSpeedMultiplier()
@@ -121,5 +115,82 @@ public class CharacterControl : MonoBehaviour
             else
                 speedMultiplier = personalSpeed;
         }
+    }
+    void CalculateMovement()
+    {
+        moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, 0, Input.GetAxis("Vertical") * speedMultiplier * 10);
+
+        // Update Y vector
+        moveDirection.y = prevY;
+
+        if (charControl.isGrounded)
+        {
+            moveDirection.y = 0.0f;
+            prevY = 0.0f;
+            moveDirection = transform.TransformDirection(moveDirection);
+            if (canJump && Input.GetKeyDown(KeyCode.Space))
+            {
+                // Jump
+                moveDirection.y = jumpHeight;
+            }
+        }
+        else
+        {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, moveDirection.y, Input.GetAxis("Vertical") * speedMultiplier * 10);
+            moveDirection = transform.TransformDirection(moveDirection);
+        }
+
+        // Apply Gravity
+        moveDirection.y += gravity * Time.deltaTime;
+
+        // Store Y Vector
+        prevY = moveDirection.y;
+
+        // Apply Air Drag
+        if (!charControl.isGrounded)
+        {
+            moveDirection.x = moveDirection.x / airDrag;
+            moveDirection.z = moveDirection.z / airDrag;
+        }
+    }
+    void UpdateClass()
+    {
+        switch (myClass)
+        {
+            case Class.Scout:
+                personalSpeed = ClassManager._scoutSpeed;
+                jumpHeight = ClassManager._scoutJumpHeight;
+                break;
+
+            case Class.Tank:
+                personalSpeed = ClassManager._tankSpeed;
+                jumpHeight = ClassManager._tankJumpHeight;
+                break;
+
+            case Class.Support:
+                personalSpeed = ClassManager._supportSpeed;
+                jumpHeight = ClassManager._supportJumpHeight;
+                break;
+
+            ///
+            /// Add other classes here
+            ///
+        }
+    }
+
+    //Checks for boosts and then uses multiplied variables 
+    void BoostCheck()
+    {
+        if (jumpBoosted)
+        {
+            jumpHeight = Powerup.boostedJumpHeight;
+        }
+        if (speedBoosted)
+        {
+            personalSpeed = Powerup.boostedSpeed;
+        }
+        ///
+        /// Add other boosts here
+        ///
     }
 }

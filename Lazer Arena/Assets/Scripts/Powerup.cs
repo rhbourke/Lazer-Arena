@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Powerup : MonoBehaviour {
-
-    [Space]
-
-    public Collider Collider;
-
-    [Space]
-
-    public float respawnTime;
-    bool active = true;
+    public enum PowerupType
+    {
+        Speed,
+        Jump
+    }
 
     [Header("Type of Powerup")]
-    public bool SpeedBoost;
-    public bool JumpBoost;
-
+    public PowerupType powerupType;
     [Space]
+    Collider Collider;
+    bool active = true;
 
+    // Determined by powerupType
+    bool SpeedBoost;
+    bool JumpBoost;
+
+    
     [Header("Properties")]
     [Range(1.1f, 3f)]
     public float multiplier;
@@ -26,43 +27,50 @@ public class Powerup : MonoBehaviour {
     [Range(1f, 30f)]
     public float duration;
 
-    float origSpeed;
-    float origHeight;
+    public float respawnTime;
 
-
+    public static float boostedSpeed; // These variables are used for updating control speeds on the character control script
+    public static float boostedJumpHeight;
+    
     void Start () {
-        // Stores original speeds before boosting them
-        origSpeed = CharacterControl.personalSpeed;
-        origHeight = CharacterControl.jumpHeight;
 
         Collider = GetComponent<Collider>();
 
         // Defaults to type speed boost if no type is set
-        if(!SpeedBoost && !JumpBoost)
+        if(!SpeedBoost && !JumpBoost) // Make sure to add the other types here
         {
             SpeedBoost = true;
+        }
+        
+        // Make sure only one type of boost is true
+        switch (powerupType)
+        {
+            case PowerupType.Speed:
+                SpeedBoost = true;
+                JumpBoost = false;
+                break;
+
+            case PowerupType.Jump:
+                JumpBoost = true;
+                SpeedBoost = false;
+                break;
+
+            // Add more cases for different types of powerups 
         }
     }
 	
 	void Update () { 
-
         if (!active)
         {
-            // Disable the Powerup when used
+            // Disable when used
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<SphereCollider>().enabled = false;
         }
         else
         {
-            // Re-enable the powerup
+            // Re-enable the powerup after respawning
             GetComponent<MeshRenderer>().enabled = true;
             GetComponent<SphereCollider>().enabled = true;
-        }
-
-        // Makes sure only one type is enabled at a time
-        if (SpeedBoost)
-        {
-            JumpBoost = false;
         }
 	}
     void OnTriggerEnter(Collider collider)
@@ -87,29 +95,33 @@ public class Powerup : MonoBehaviour {
     }
     IEnumerator GiveSpeedBoost()
     {
-        active = false;
+        active = false; // Deactivate Powerup
         Debug.Log("Picked up speed boost");
 
-        CharacterControl.personalSpeed *= multiplier;
+        CharacterControl.speedBoosted = true; // Powerup is being used
+
+        boostedSpeed = CharacterControl.personalSpeed * multiplier; // Updates the target speed (to assign when powerup is being used)
         yield return new WaitForSeconds(duration);
-        CharacterControl.personalSpeed = origSpeed;
+        CharacterControl.speedBoosted = false; // Powerup is no longer being used
 
         StartCoroutine(RespawnPowerup());
     }
     IEnumerator GiveJumpBoost()
     {
-        active = false;
+        active = false; // Deactivate Powerup
         Debug.Log("Picked up jump boost");
 
-        CharacterControl.jumpHeight *= multiplier;
+        CharacterControl.jumpBoosted = true; // True when powerup is being used
+
+        boostedJumpHeight = CharacterControl.jumpHeight * multiplier; // Updates the target speed (to assign when powerup is being used)
         yield return new WaitForSeconds(duration);
-        CharacterControl.jumpHeight = origHeight;
+        CharacterControl.jumpBoosted = false; // Powerup is no longer being used
 
         StartCoroutine(RespawnPowerup());
     }
     IEnumerator RespawnPowerup()
     {
-        yield return new WaitForSeconds(respawnTime);
-        active = true;
+        yield return new WaitForSeconds(respawnTime); // Wait for respawn timer
+        active = true; // Reactivate Powerup
     }
 }
