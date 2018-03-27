@@ -103,13 +103,13 @@ MonoBehaviour:
         intensity: 0.29
         threshold: 1.1
         softKnee: 0.404
-        radius: 4.55
+        radius: 2.54
         antiFlicker: 1
       lensDirt:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       tonemapping:
         tonemapper: 2

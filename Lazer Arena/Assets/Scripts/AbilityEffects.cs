@@ -8,15 +8,16 @@ public class AbilityEffects : MonoBehaviour {
     public AudioSource MovementSrc;
     public AudioSource RocketAudioSrc;
     public AudioSource JumpSrc;
-    public AudioClip WalkingLoop;
-    public AudioClip RunningLoop;
-    public AudioClip JumpSound;
-    public AudioClip RocketJumpLoop;
-    public AudioClip RocketJumpLoopEnd;
+    AudioClip WalkingLoop;
+    AudioClip RunningLoop;
+    AudioClip JumpingSound;
+    AudioClip RocketJumpLoop;
+    AudioClip RocketJumpLoopEnd;
+    AudioClip LandingSound;
 
     public Transform RocketPos;
 
-    public GameObject RocketJumpParticle;
+    GameObject RocketJumpParticle;
     GameObject RocketJumpTemporaryParticle;
 
     public bool movementEffects;
@@ -28,6 +29,15 @@ public class AbilityEffects : MonoBehaviour {
 
     private void Start()
     {
+        // Grabs Globally set Effect sources
+        WalkingLoop = EffectManager._WalkLoop;
+        RunningLoop = EffectManager._RunLoop;
+        JumpingSound = EffectManager._JumpSound;
+        RocketJumpLoop = EffectManager._RocketJumpLoop;
+        RocketJumpLoopEnd = EffectManager._RocketJumpLoopEnd;
+        LandingSound = EffectManager._LandingSound;
+        RocketJumpParticle = EffectManager._RocketJumpParticle;
+
         RocketAudioSrc.clip = RocketJumpLoop;
     }
 
@@ -99,20 +109,24 @@ public class AbilityEffects : MonoBehaviour {
     void EnableRocketParticle()
     {
         RocketJumpTemporaryParticle.transform.position = RocketPos.transform.position;
-        RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Play();
+        if (!RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
+        {
+            RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Play();
+        }
     }
 
     void DisableRocketParticle()
     {
         if (RocketJumpTemporaryParticle != null)
         {
-            RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Stop();
-            Destroy(RocketJumpTemporaryParticle, 1f);
+            if (RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
+                RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Stop();
+            Destroy(RocketJumpTemporaryParticle, 3f);
         }
     }
     void MovementEffects()
     {
-        JumpingSound();
+        JumpSound();
         WalkingSound();
         LandingEffects();
         
@@ -134,12 +148,13 @@ public class AbilityEffects : MonoBehaviour {
     {
         // Add dust poof particle instantiation here
         // Add a landing sound here
+        JumpSrc.PlayOneShot(LandingSound);
     }
-    void JumpingSound()
+    void JumpSound()
     {
         if (jumped)
         {
-            JumpSrc.PlayOneShot(JumpSound);
+            JumpSrc.PlayOneShot(JumpingSound);
             jumped = false;
         }
     }
