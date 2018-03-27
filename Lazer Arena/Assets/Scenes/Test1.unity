@@ -594,7 +594,7 @@ MonoBehaviour:
   RocketJumpLoopEnd: {fileID: 8300000, guid: e027f81c215dfe445a6bd82f25c173bf, type: 3}
   RocketPos: {fileID: 1149265973}
   RocketJumpParticle: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 2}
-  movementEffects: 0
+  movementEffects: 1
   rocketJumpEffects: 1
 --- !u!143 &606594961
 CharacterController:
