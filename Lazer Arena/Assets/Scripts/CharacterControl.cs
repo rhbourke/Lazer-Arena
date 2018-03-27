@@ -71,9 +71,6 @@ public class CharacterControl : MonoBehaviour
         // Check if any boosts are active, and use these multipliers
         BoostCheck();
 
-        Debug.Log("Speed = " + personalSpeed);
-        Debug.Log("Jump Height = " + jumpHeight);
-
         // Calculate multiplier based on current movement conditions(sprinting, diagonal movement... etc)
         CalculateSpeedMultiplier();
 
@@ -118,6 +115,7 @@ public class CharacterControl : MonoBehaviour
     }
     void CalculateMovement()
     {
+        
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, 0, Input.GetAxis("Vertical") * speedMultiplier * 10);
 
         // Update Y vector
@@ -139,6 +137,12 @@ public class CharacterControl : MonoBehaviour
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, moveDirection.y, Input.GetAxis("Vertical") * speedMultiplier * 10);
             moveDirection = transform.TransformDirection(moveDirection);
+        }
+
+        if (Physics.Raycast(transform.position, transform.up * 1.2f, 1.2f))
+        {
+            //Hit your head, fall back down
+            moveDirection.y -= jumpHeight;
         }
 
         // Apply Gravity

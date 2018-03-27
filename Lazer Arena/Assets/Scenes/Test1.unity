@@ -398,8 +398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clampInDegrees: {x: 360, y: 180}
   lockCursor: 1
-  sensitivity: {x: 1, y: 1}
-  smoothing: {x: 3, y: 3}
+  sensitivity: {x: 0.6, y: 0.6}
+  smoothing: {x: 1.5, y: 1.5}
   targetDirection: {x: 0, y: 0}
   targetCharacterDirection: {x: 0, y: 0}
   characterBody: {fileID: 606594957}
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   RocketJumpLoop: {fileID: 8300000, guid: 24a6e8bceeed0484884139edbbc80fa6, type: 3}
   RocketJumpLoopEnd: {fileID: 8300000, guid: e027f81c215dfe445a6bd82f25c173bf, type: 3}
   LandingSound: {fileID: 8300000, guid: fcd0501b0f0b5354fbdbdeb7d6c9c1f0, type: 3}
-  RocketJumpParticle: {fileID: 1300369394604274, guid: 88485a7c94d23d2419507ef1e9776d7d,
+  RocketJumpParticle: {fileID: 1375267823910212, guid: 23f32d28903a5c4498714188c1c051f1,
     type: 2}
 --- !u!4 &1153077806
 Transform:
@@ -2415,12 +2415,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ece9c3ce7a8cd46b6c1190f4b78c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoutSpeed: 1
-  scoutJumpHeight: 5
-  tankSpeed: 0.8
-  tankJumpHeight: 3
-  supportSpeed: 0.9
-  supportJumpHeight: 4
+  scoutSpeed: 0.7
+  scoutJumpHeight: 6
+  tankSpeed: 0.5
+  tankJumpHeight: 4
+  supportSpeed: 0.6
+  supportJumpHeight: 5
 --- !u!4 &1913594931
 Transform:
   m_ObjectHideFlags: 0
