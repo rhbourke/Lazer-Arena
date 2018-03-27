@@ -42,7 +42,7 @@ public class CharacterControl : MonoBehaviour
     public float airDrag = 1.3f;
 
     float speedMultiplier; 
-    public bool canJump = true;
+    public static bool canJump = true;
     public static float jumpHeight = 5.0f;
     public float gravity;
 
@@ -132,6 +132,7 @@ public class CharacterControl : MonoBehaviour
             {
                 // Jump
                 moveDirection.y = jumpHeight;
+                AbilityEffects.jumped = true;
             }
         }
         else
