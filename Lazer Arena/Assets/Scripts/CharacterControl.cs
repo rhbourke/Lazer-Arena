@@ -28,10 +28,8 @@ public class CharacterControl : MonoBehaviour
     [Space]
 
     CharacterController charControl;
-
     
     public static float personalSpeed = 1.0f; // The speed this character should travel at by default -- This variable is adjusted by speed boost and class type.
-
     
     [Header("Movement")]
     [Range(1.2f, 3f)]
@@ -55,6 +53,7 @@ public class CharacterControl : MonoBehaviour
     public static bool jumpBoosted = false;
     public static bool speedBoosted = false;
 
+
     void Start()
     {
         // Set references and defaults
@@ -65,6 +64,7 @@ public class CharacterControl : MonoBehaviour
     }
     void Update()
     {
+
         // Update variables based on class
         UpdateClass();
 
