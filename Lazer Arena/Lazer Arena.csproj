@@ -288,13 +288,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AbilityEffects.cs" />
     <Compile Include="Assets\Scripts\CharacterControl.cs" />
     <Compile Include="Assets\Scripts\ClassManager.cs" />
     <Compile Include="Assets\Scripts\Powerup.cs" />
-    <Compile Include="Assets\Scripts\RocketJumpPS.cs" />
     <Compile Include="Assets\Scripts\SimpleSmoothMouseLook.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
     <None Include="Assets\Standard Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\Standard Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\Standard Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
