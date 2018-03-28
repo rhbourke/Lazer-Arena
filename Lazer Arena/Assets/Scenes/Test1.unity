@@ -544,7 +544,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606594957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.18, y: 20.26, z: -22.46}
+  m_LocalPosition: {x: 2.18, y: 20.26, z: -17.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1462549012}
@@ -570,10 +570,7 @@ MonoBehaviour:
   transitDurToSprint: 0.6
   transitDurToWalk: 0.8
   sprintMultiplier: 2
-  diagSpeed: 1.5
-  airDrag: 1.384
   gravity: -10.8
-  airDragEnabled: 0
 --- !u!114 &606594960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,11 +1321,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpSound: {fileID: 8300000, guid: b104eb2996f93934c8fdba34156ae502, type: 3}
-  WalkLoop: {fileID: 8300000, guid: 22477dfc5eb338a4b9aa7a2ca6560333, type: 3}
-  RunLoop: {fileID: 8300000, guid: 70c78c5f85523c34e89f9dc57c9b6b48, type: 3}
+  ScoutWalkLoop: {fileID: 8300000, guid: 090eaa4c8597dd14d9485f409b500836, type: 3}
+  ScoutRunLoop: {fileID: 8300000, guid: 185dd251b92ad554cb32541c30a5e39d, type: 3}
   RocketJumpLoop: {fileID: 8300000, guid: 24a6e8bceeed0484884139edbbc80fa6, type: 3}
   RocketJumpLoopEnd: {fileID: 8300000, guid: e027f81c215dfe445a6bd82f25c173bf, type: 3}
-  LandingSound: {fileID: 8300000, guid: fcd0501b0f0b5354fbdbdeb7d6c9c1f0, type: 3}
+  LandingSound: {fileID: 8300000, guid: 815a5771d8bc13c46950d8544a2f2cdb, type: 3}
   RocketJumpParticle: {fileID: 1570316750786188, guid: 23f32d28903a5c4498714188c1c051f1,
     type: 2}
 --- !u!4 &1153077806
@@ -2434,6 +2431,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoutSpeed: 0.7
   scoutJumpHeight: 6
+  SFuelRechargeSpeed: 10
+  SFuelUseSpeed: 20
+  SFuelRechargeTime: 3
+  SBoostEnabled: 0
   tankSpeed: 0.5
   tankJumpHeight: 4
   supportSpeed: 0.6

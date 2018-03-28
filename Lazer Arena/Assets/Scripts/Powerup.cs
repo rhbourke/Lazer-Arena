@@ -79,7 +79,6 @@ public class Powerup : MonoBehaviour {
         {
             if (collider.gameObject.tag == "Player")
             {
-                Debug.Log("Collided with Player");
                 if (SpeedBoost) // If this is a speed boost
                 {
                     // Give speed boost 
@@ -96,7 +95,6 @@ public class Powerup : MonoBehaviour {
     IEnumerator GiveSpeedBoost()
     {
         active = false; // Deactivate Powerup
-        Debug.Log("Picked up speed boost");
 
         CharacterControl.speedBoosted = true; // Powerup is being used
 
@@ -109,7 +107,6 @@ public class Powerup : MonoBehaviour {
     IEnumerator GiveJumpBoost()
     {
         active = false; // Deactivate Powerup
-        Debug.Log("Picked up jump boost");
 
         CharacterControl.jumpBoosted = true; // True when powerup is being used
 

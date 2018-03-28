@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EffectManager : MonoBehaviour {
     public static AudioClip _JumpSound;
-    public static AudioClip _WalkLoop;
-    public static AudioClip _RunLoop;
+    public static AudioClip _ScoutWalkLoop;
+    public static AudioClip _ScoutRunLoop;
     public static AudioClip _RocketJumpLoop;
     public static AudioClip _RocketJumpLoopEnd;
     public static AudioClip _LandingSound;
     public static GameObject _RocketJumpParticle;
     public AudioClip JumpSound;
-    public AudioClip WalkLoop;
-    public AudioClip RunLoop;
+    public AudioClip ScoutWalkLoop;
+    public AudioClip ScoutRunLoop;
     public AudioClip RocketJumpLoop;
     public AudioClip RocketJumpLoopEnd;
     public AudioClip LandingSound;
@@ -21,8 +21,8 @@ public class EffectManager : MonoBehaviour {
     private void Awake()
     {
         _JumpSound = JumpSound;
-        _WalkLoop = WalkLoop;
-        _RunLoop = RunLoop;
+        _ScoutWalkLoop = ScoutWalkLoop;
+        _ScoutRunLoop = ScoutRunLoop;
         _RocketJumpLoop = RocketJumpLoop;
         _RocketJumpLoopEnd = RocketJumpLoopEnd;
         _LandingSound = LandingSound;

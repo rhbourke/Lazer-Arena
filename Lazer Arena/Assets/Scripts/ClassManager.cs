@@ -7,24 +7,41 @@ public class ClassManager : MonoBehaviour {
     /// <summary>
     /// Class Properties
     /// </summary>
+    static CharacterControl characterControl = new CharacterControl();
+
     
-    [Header("Scout")]
     public static float _scoutSpeed;
+    [Header("Scout")]
+    [Space]
     public float scoutSpeed = 1; // CHANGEABLE
     public static float _scoutJumpHeight;
     public float scoutJumpHeight = 5; // CHANGEABLE
+    public static float _SFuelRecharge;
+    public float SFuelRechargeSpeed = 10;
+    public static float _SFuelUse;
+    public float SFuelUseSpeed = 20;
+    public static float _SFuelRechargeTime;
+    public float SFuelRechargeTime = 3f;
+    public static bool _SBoostEnabled;
+    public bool SBoostEnabled;
 
-    [Header("Tank")]
+    
     public static float _tankSpeed;
+    [Header("Tank")]
+    [Space]
     public float tankSpeed = 3f; // CHANGEABLE
     public static float _tankJumpHeight;
     public float tankJumpHeight = 3f; // CHANGEABLE
+    
 
-    [Header("Support")]
+    
     public static float _supportSpeed;
+    [Header("Support")]
+    [Space]
     public float supportSpeed = .9f; // CHANGEABLE
     public static float _supportJumpHeight;
     public float supportJumpHeight = 4f; // CHANGEABLE
+
 
     void Update()
     {
@@ -33,6 +50,10 @@ public class ClassManager : MonoBehaviour {
 
         _scoutSpeed = scoutSpeed;
         _scoutJumpHeight = scoutJumpHeight;
+        _SFuelRecharge = SFuelRechargeSpeed;
+        _SFuelUse = SFuelUseSpeed;
+        _SFuelRechargeTime = SFuelRechargeTime;
+        _SBoostEnabled = SBoostEnabled;
 
 
         _tankSpeed = tankSpeed;
@@ -40,5 +61,9 @@ public class ClassManager : MonoBehaviour {
 
         _supportSpeed = supportSpeed;
         _supportJumpHeight = supportJumpHeight;
+
+
+
+        
     }
 }

@@ -35,17 +35,22 @@ public class CharacterControl : MonoBehaviour
     [Range(1.2f, 3f)]
     public float sprintMultiplier = 1.5f;
 
-    [Range(1.1f, 1.5f)]
-    public float airDrag = 1.3f;
-
     float speedMultiplier; 
     public static bool canJump = true;
     public static float jumpHeight = 5.0f;
     public float gravity;
-    public bool airDragEnabled;
 
     float prevY;
     Vector3 moveDirection;
+
+    // Abilities
+    public static bool isScoutBoosting;
+    public static float SFuel = 100f;
+    bool canRechargeSFuel;
+
+    public static bool isScout;
+    public static bool isTank;
+    public static bool isSupport;
 
     // Add boost bools here. (True if the boost is being used by player)
     public static bool jumpBoosted = false;
@@ -54,11 +59,16 @@ public class CharacterControl : MonoBehaviour
 
     void Start()
     {
+        // Check what class we are
+        UpdateClass();
+
         // Set references and defaults
         PlayerCam = gameObject.GetComponentInChildren<Camera>();
         PlayerCam.fieldOfView = startFOV;
         speedMultiplier = personalSpeed;
         charControl = GetComponent<CharacterController>();
+
+        
     }
     void Update()
     {
@@ -81,34 +91,23 @@ public class CharacterControl : MonoBehaviour
 
     void CalculateSpeedMultiplier()
     {
-        // If sprinting
-        if ((Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W)) && !(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if (isScout)
         {
-            // Speed Up
-            speedMultiplier = personalSpeed * sprintMultiplier;
-
-            // Expand FOV 
-            if (PlayerCam.fieldOfView < sprintFOV)
-                PlayerCam.fieldOfView += .5f * Time.fixedDeltaTime * transitDurToSprint * 100;
-        }
-        else
-        {
-            // Go at default speed
-            speedMultiplier = personalSpeed;
-
-            // Shrink FOV
-            if (PlayerCam.fieldOfView > startFOV)
+            if (ClassManager._SBoostEnabled)
             {
-                PlayerCam.fieldOfView -= 1f * Time.fixedDeltaTime * transitDurToWalk * 100;
-            }
-
-            if (((Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.A))) && charControl.isGrounded))
-            {
-                // Slow down while going diagonal
-                speedMultiplier = personalSpeed / Mathf.Sqrt(2);
-            }
-            else
+                // Change speed based on whether or not player is using scout boost
+                ScoutBoost();
+            } else
                 speedMultiplier = personalSpeed;
+        }
+        else {
+            // default speed to class default speed
+            speedMultiplier = personalSpeed;
+        }
+        if (((Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.A))) && charControl.isGrounded))
+        {
+            // Slow down while going diagonal
+            speedMultiplier = personalSpeed / Mathf.Sqrt(2);
         }
     }
     void CalculateMovement()
@@ -149,15 +148,6 @@ public class CharacterControl : MonoBehaviour
         // Store Y Vector
         prevY = moveDirection.y;
 
-        if (airDragEnabled)
-        {
-            // Apply Air Drag
-            if (!charControl.isGrounded)
-            {
-                moveDirection.x = moveDirection.x / airDrag;
-                moveDirection.z = moveDirection.z / airDrag;
-            }
-        }
     }
     void UpdateClass()
     {
@@ -166,16 +156,25 @@ public class CharacterControl : MonoBehaviour
             case Class.Scout:
                 personalSpeed = ClassManager._scoutSpeed;
                 jumpHeight = ClassManager._scoutJumpHeight;
+                isScout = true;
+                isTank = false;
+                isSupport = false;
                 break;
 
             case Class.Tank:
                 personalSpeed = ClassManager._tankSpeed;
                 jumpHeight = ClassManager._tankJumpHeight;
+                isScout = false;
+                isTank = true;
+                isSupport = false;
                 break;
 
             case Class.Support:
                 personalSpeed = ClassManager._supportSpeed;
                 jumpHeight = ClassManager._supportJumpHeight;
+                isScout = false;
+                isTank = false;
+                isSupport = true;
                 break;
 
             ///
@@ -198,5 +197,62 @@ public class CharacterControl : MonoBehaviour
         ///
         /// Add other boosts here
         ///
+    }
+
+    
+    void ScoutBoost()
+    {
+        Debug.Log("Scout boost fuel: " + SFuel);
+
+            
+        // If using scout boost mechanic
+        if ((Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W)) && !(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && SFuel > 1)
+        {
+            isScoutBoosting = true;
+            // Speed Up
+            speedMultiplier = personalSpeed * sprintMultiplier;
+
+            // Expand FOV 
+            if (PlayerCam.fieldOfView < sprintFOV)
+                PlayerCam.fieldOfView += .5f * Time.fixedDeltaTime * transitDurToSprint * 100;
+
+            // Use fuel
+            SFuel -= Time.deltaTime * ClassManager._SFuelUse;
+        }  
+        else
+        {
+            // If player was scout boosting, start a new delay timer for the recharge
+            if (isScoutBoosting)
+            {
+                StartCoroutine(RechargeSFuelDelay());
+            }
+
+            // If not using scout boost input
+            isScoutBoosting = false;
+
+            // Go at default speed
+            speedMultiplier = personalSpeed;
+
+            // Shrink FOV
+            if (PlayerCam.fieldOfView > startFOV)
+            {
+                PlayerCam.fieldOfView -= 1f * Time.fixedDeltaTime * transitDurToWalk * 100;
+            }
+            else
+                speedMultiplier = personalSpeed;
+
+            // Recharge Fuel if waited timer
+            if (canRechargeSFuel)
+            {
+                if (SFuel < 100)
+                    SFuel += Time.deltaTime * ClassManager._SFuelRecharge;
+            }
+        }
+    }
+    IEnumerator RechargeSFuelDelay()
+    {
+        canRechargeSFuel = false;
+        yield return new WaitForSeconds(ClassManager._SFuelRechargeTime);
+        canRechargeSFuel = true;
     }
 }
