@@ -45,6 +45,7 @@ public class CharacterControl : MonoBehaviour
     public static bool canJump = true;
     public static float jumpHeight = 5.0f;
     public float gravity;
+    public bool airDragEnabled;
 
     float prevY;
     Vector3 moveDirection;
@@ -107,7 +108,7 @@ public class CharacterControl : MonoBehaviour
             if (((Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.A))) && charControl.isGrounded))
             {
                 // Slow down while going diagonal
-                speedMultiplier = personalSpeed / diagSpeed;
+                speedMultiplier = personalSpeed / Mathf.Sqrt(2);
             }
             else
                 speedMultiplier = personalSpeed;
@@ -151,11 +152,14 @@ public class CharacterControl : MonoBehaviour
         // Store Y Vector
         prevY = moveDirection.y;
 
-        // Apply Air Drag
-        if (!charControl.isGrounded)
+        if (airDragEnabled)
         {
-            moveDirection.x = moveDirection.x / airDrag;
-            moveDirection.z = moveDirection.z / airDrag;
+            // Apply Air Drag
+            if (!charControl.isGrounded)
+            {
+                moveDirection.x = moveDirection.x / airDrag;
+                moveDirection.z = moveDirection.z / airDrag;
+            }
         }
     }
     void UpdateClass()
