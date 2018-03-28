@@ -35,9 +35,6 @@ public class CharacterControl : MonoBehaviour
     [Range(1.2f, 3f)]
     public float sprintMultiplier = 1.5f;
 
-    [Range(1.5f, 3f)]
-    public float diagSpeed; // The divider by which the character should travel diagonally
-
     [Range(1.1f, 1.5f)]
     public float airDrag = 1.3f;
 
