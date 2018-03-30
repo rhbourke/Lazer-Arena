@@ -1320,12 +1320,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ea435300c0d944f99bfa70c3de8d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpSound: {fileID: 8300000, guid: b104eb2996f93934c8fdba34156ae502, type: 3}
-  ScoutWalkLoop: {fileID: 8300000, guid: 090eaa4c8597dd14d9485f409b500836, type: 3}
-  ScoutRunLoop: {fileID: 8300000, guid: 185dd251b92ad554cb32541c30a5e39d, type: 3}
+  JumpSound: {fileID: 8300000, guid: 993ded3bd7901d344aa8deb461e6e5ce, type: 3}
+  JumpSound2: {fileID: 8300000, guid: 4ef1947c5ef9a664fb09caf299da426f, type: 3}
+  JumpSound3: {fileID: 8300000, guid: c67f2844489f39e43898bf51b9df8f8c, type: 3}
+  JumpSound4: {fileID: 8300000, guid: f1f7fa46bd285c54bab1bc3d221e2be6, type: 3}
+  LandingSound: {fileID: 8300000, guid: c6e40239442146d45819f4ec933e7ee3, type: 3}
+  LandingSound2: {fileID: 8300000, guid: f9d28b6c1dc9f884bbf5d74c2bb73e3c, type: 3}
+  LandingSound3: {fileID: 8300000, guid: ab0b2b97b0438fe49b2a3db023b83ba5, type: 3}
+  LandingSound4: {fileID: 8300000, guid: f2158d0de71f42c4fbc2ad8d5c5b7f1d, type: 3}
+  LandingParticle: {fileID: 0}
+  ScoutWalkLoop: {fileID: 8300000, guid: 9e06169c750543245a8c9a5a3826e92d, type: 3}
+  ScoutRunLoop: {fileID: 8300000, guid: 99a95685e4fc6f94e8551fd18a8a17e9, type: 3}
+  ScoutEndMove: {fileID: 8300000, guid: 5a3e24e40c679734598d13acc2201560, type: 3}
   RocketJumpLoop: {fileID: 8300000, guid: 24a6e8bceeed0484884139edbbc80fa6, type: 3}
   RocketJumpLoopEnd: {fileID: 8300000, guid: e027f81c215dfe445a6bd82f25c173bf, type: 3}
-  LandingSound: {fileID: 8300000, guid: 815a5771d8bc13c46950d8544a2f2cdb, type: 3}
   RocketJumpParticle: {fileID: 1570316750786188, guid: 23f32d28903a5c4498714188c1c051f1,
     type: 2}
 --- !u!4 &1153077806
@@ -2434,7 +2442,7 @@ MonoBehaviour:
   SFuelRechargeSpeed: 10
   SFuelUseSpeed: 20
   SFuelRechargeTime: 3
-  SBoostEnabled: 0
+  SBoostEnabled: 1
   tankSpeed: 0.5
   tankJumpHeight: 4
   supportSpeed: 0.6

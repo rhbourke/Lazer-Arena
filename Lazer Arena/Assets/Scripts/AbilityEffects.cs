@@ -8,21 +8,20 @@ public class AbilityEffects : MonoBehaviour {
     public AudioSource MovementSrc;
     public AudioSource RocketAudioSrc;
     public AudioSource JumpSrc;
-    AudioClip ScoutWalkLoop;
-    AudioClip ScoutRunLoop;
-    AudioClip JumpingSound;
-    AudioClip RocketJumpLoop;
-    AudioClip RocketJumpLoopEnd;
-    AudioClip LandingSound;
+
+    int numJumps = 1;
+
 
     public Transform RocketPos;
 
-    GameObject RocketJumpParticle;
     GameObject RocketJumpTemporaryParticle;
 
     public bool movementEffects;
     public static bool jumped;
     bool landed = false;
+    bool playedLandingSound = false;
+    int numLands = 1;
+    bool isMoving;
 
     public bool rocketJumpEffects;
     bool isRocketJumping;
@@ -30,19 +29,11 @@ public class AbilityEffects : MonoBehaviour {
     private void Start()
     {
         // Grabs Globally set Effect sources
-        ScoutWalkLoop = EffectManager._ScoutWalkLoop;
-        ScoutRunLoop = EffectManager._ScoutRunLoop;
-        JumpingSound = EffectManager._JumpSound;
-        RocketJumpLoop = EffectManager._RocketJumpLoop;
-        RocketJumpLoopEnd = EffectManager._RocketJumpLoopEnd;
-        LandingSound = EffectManager._LandingSound;
-        RocketJumpParticle = EffectManager._RocketJumpParticle;
-
-        RocketAudioSrc.clip = RocketJumpLoop;
+        
+        RocketAudioSrc.clip = EffectManager._RocketJumpLoop;
     }
 
     void Update () {
-
         //Updates the effects based on what abilities are being used
         UpdateEffects();
     }
@@ -50,6 +41,7 @@ public class AbilityEffects : MonoBehaviour {
 
     void UpdateEffects()
     {
+        // Play Ability Effects 
         if (CharacterControl.isScout)
         {
             if (ClassManager._SBoostEnabled)
@@ -58,6 +50,9 @@ public class AbilityEffects : MonoBehaviour {
                 RocketJumpEffects();
             }
         }
+
+
+        // Play default movement effects
         if(movementEffects)
             MovementEffects();
     }
@@ -69,7 +64,7 @@ public class AbilityEffects : MonoBehaviour {
             if (CharacterControl.SFuel > 1)
             {
                 isRocketJumping = true;
-                RocketJumpTemporaryParticle = Instantiate(RocketJumpParticle, RocketPos) as GameObject;
+                RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
                 PlayRocketSound();
             }
         }
@@ -78,7 +73,7 @@ public class AbilityEffects : MonoBehaviour {
             if (CharacterControl.SFuel > 1)
             {
                 isRocketJumping = true;
-                RocketJumpTemporaryParticle = Instantiate(RocketJumpParticle, RocketPos) as GameObject;
+                RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
                 PlayRocketSound();
             }
         }
@@ -118,7 +113,7 @@ public class AbilityEffects : MonoBehaviour {
 
     void PlayRocketSound()
     {
-        RocketAudioSrc.clip = RocketJumpLoop;
+        RocketAudioSrc.clip = EffectManager._RocketJumpLoop;
         RocketAudioSrc.loop = true;
         if (!RocketAudioSrc.isPlaying) {
             RocketAudioSrc.Play();
@@ -127,7 +122,7 @@ public class AbilityEffects : MonoBehaviour {
     void PlayRocketSoundEnd()
     {
         RocketAudioSrc.loop = false;
-        RocketAudioSrc.clip = RocketJumpLoopEnd;
+        RocketAudioSrc.clip = EffectManager._RocketJumpLoopEnd;
         RocketAudioSrc.Play();
     }
 
@@ -160,6 +155,7 @@ public class AbilityEffects : MonoBehaviour {
         // Play dust particle and sound when landing
         LandingEffects();
     }
+
     void LandingEffects()
     {
         if (!GetComponent<CharacterController>().isGrounded)
@@ -169,6 +165,7 @@ public class AbilityEffects : MonoBehaviour {
 
         if (!landed && GetComponent<CharacterController>().isGrounded)
         {
+            playedLandingSound = false;
             landed = true;
             PlayLandingEffects();
         }
@@ -177,18 +174,64 @@ public class AbilityEffects : MonoBehaviour {
     {
         // Add dust poof particle instantiation here
         // Add a landing sound here
-        JumpSrc.PlayOneShot(LandingSound);
+        if (numLands == 1 && !playedLandingSound)
+        {
+            playedLandingSound = true;
+            JumpSrc.PlayOneShot(EffectManager._LandingSound);
+            numLands++;
+        }
+        if (numLands == 2 && !playedLandingSound)
+        {
+            playedLandingSound = true;
+            JumpSrc.PlayOneShot(EffectManager._LandingSound2);
+            numLands++;
+        }
+        if (numLands == 3 && !playedLandingSound)
+        {
+            playedLandingSound = true;
+            JumpSrc.PlayOneShot(EffectManager._LandingSound3);
+            numLands++;
+            Debug.Log("Jump3");
+        }
+        if (numLands == 4 && !playedLandingSound)
+        {
+            playedLandingSound = true;
+            JumpSrc.PlayOneShot(EffectManager._LandingSound4);
+            numLands = 1;
+        }
     }
     void JumpSound()
     {
-        if (jumped)
+        if (jumped && (numJumps == 1))
         {
-            JumpSrc.PlayOneShot(JumpingSound);
+            JumpSrc.PlayOneShot(EffectManager._JumpSound);
             jumped = false;
+            numJumps++;
+        }
+        if (jumped && (numJumps == 2))
+        {
+            JumpSrc.PlayOneShot(EffectManager._JumpSound2);
+            jumped = false;
+            numJumps++;
+        }
+        if (jumped && (numJumps == 3))
+        {
+            JumpSrc.PlayOneShot(EffectManager._JumpSound3);
+            jumped = false;
+            numJumps++;
+        }
+        if (jumped && (numJumps == 4))
+        {
+            JumpSrc.PlayOneShot(EffectManager._JumpSound4);
+            jumped = false;
+            numJumps = 1;
         }
     }
     void WalkingSound()
     {
+        // Start moving sounds
+
+
         if (GetComponent<CharacterController>().isGrounded && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
             //If walking, play these sounds
@@ -209,37 +252,48 @@ public class AbilityEffects : MonoBehaviour {
                 ManageScoutSounds();
             }
 
+            isMoving = true;
+
             if (!MovementSrc.isPlaying)
                 MovementSrc.Play();
-        } else
+        }
+        else
+        {
             MovementSrc.clip = null;
+            if (isMoving)
+            {
+                MovementSrc.PlayOneShot(EndMovingSound());
+                isMoving = false;
+            }
+        }
     }
     void ManageScoutSounds()
     {
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            MovementSrc.clip = ScoutWalkLoop;
+            MovementSrc.clip = EffectManager._ScoutWalkLoop;
         }
         if (Input.GetKey(KeyCode.LeftShift) && !ClassManager._SBoostEnabled)
         {
-            MovementSrc.clip = ScoutWalkLoop;
+            MovementSrc.clip = EffectManager._ScoutWalkLoop;
         }
         if (isRocketJumping)
         {
             if (CharacterControl.SFuel < 1)
             {
-                MovementSrc.clip = ScoutWalkLoop;
+                MovementSrc.clip = EffectManager._ScoutWalkLoop;
                 isRocketJumping = false;
             }
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                MovementSrc.clip = ScoutRunLoop;
+                MovementSrc.clip = EffectManager._ScoutRunLoop;
             }
         }
         if (CharacterControl.SFuel < 1)
         {
-            MovementSrc.clip = ScoutWalkLoop;
+            MovementSrc.clip = EffectManager._ScoutWalkLoop;
         }
+
     }
     void ManageTankSounds()
     {
@@ -248,6 +302,13 @@ public class AbilityEffects : MonoBehaviour {
     void ManageSupportSounds()
     {
 
+    }
+    public AudioClip EndMovingSound()
+    {
+        if (CharacterControl.isScout){
+            return EffectManager._ScoutEndMove;
+        }
+        return null;
     }
 }
 
