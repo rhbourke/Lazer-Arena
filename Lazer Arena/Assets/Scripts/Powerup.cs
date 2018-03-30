@@ -5,9 +5,11 @@ using UnityEngine;
 public class Powerup : MonoBehaviour {
     public enum PowerupType
     {
-        Speed,
-        Jump
+        Agility,
+        
     }
+
+    GameObject Player;
 
     [Header("Type of Powerup")]
     public PowerupType powerupType;
@@ -16,9 +18,8 @@ public class Powerup : MonoBehaviour {
     bool active = true;
 
     // Determined by powerupType
-    bool SpeedBoost;
-    bool JumpBoost;
-
+    bool AgilityBoost;
+    CharacterControl charController;
     
     [Header("Properties")]
     [Range(1.1f, 3f)]
@@ -31,29 +32,32 @@ public class Powerup : MonoBehaviour {
 
     public static float boostedSpeed; // These variables are used for updating control speeds on the character control script
     public static float boostedJumpHeight;
-    
+
+    float normalFOV;
+    public float agilityFOVIncrease;
+    public float FOVTransitionTime = .5f;
+    bool increasingFOV = false;
+    bool decreasingFOV = false;
+
+
     void Start () {
 
+        
         Collider = GetComponent<Collider>();
 
-        // Defaults to type speed boost if no type is set
-        if(!SpeedBoost && !JumpBoost) // Make sure to add the other types here
+        // Defaults to type agility boost if no type is set
+        if(!AgilityBoost) // Make sure to add the other types here
         {
-            SpeedBoost = true;
+            AgilityBoost = true;
         }
         
         // Make sure only one type of boost is true
         switch (powerupType)
         {
-            case PowerupType.Speed:
-                SpeedBoost = true;
-                JumpBoost = false;
+            case PowerupType.Agility:
+                AgilityBoost = true;
                 break;
 
-            case PowerupType.Jump:
-                JumpBoost = true;
-                SpeedBoost = false;
-                break;
 
             // Add more cases for different types of powerups 
         }
@@ -72,6 +76,14 @@ public class Powerup : MonoBehaviour {
             GetComponent<MeshRenderer>().enabled = true;
             GetComponent<SphereCollider>().enabled = true;
         }
+        if (increasingFOV)
+        {
+            IncreaseFOV();
+        }
+        if (decreasingFOV)
+        {
+            DecreaseFOV();
+        }
 	}
     void OnTriggerEnter(Collider collider)
     {
@@ -79,14 +91,14 @@ public class Powerup : MonoBehaviour {
         {
             if (collider.gameObject.tag == "Player")
             {
-                if (SpeedBoost) // If this is a speed boost
+                Player = collider.gameObject;
+                charController = Player.GetComponent<CharacterControl>();
+                normalFOV = charController.PlayerCam.fieldOfView;
+
+                if (AgilityBoost) // If this is a speed boost
                 {
                     // Give speed boost 
                     StartCoroutine(GiveSpeedBoost());
-                }
-                if (JumpBoost) // If this is a jump boost
-                {
-                    // Give jump boost
                     StartCoroutine(GiveJumpBoost());
                 }
             }
@@ -96,11 +108,12 @@ public class Powerup : MonoBehaviour {
     {
         active = false; // Deactivate Powerup
 
-        CharacterControl.speedBoosted = true; // Powerup is being used
-
-        boostedSpeed = CharacterControl.personalSpeed * multiplier; // Updates the target speed (to assign when powerup is being used)
+        charController.speedBoosted = true; // Powerup is being used
+        increasingFOV = true;
+        boostedSpeed = charController.personalSpeed * multiplier; // Updates the target speed (to assign when powerup is being used)
         yield return new WaitForSeconds(duration);
-        CharacterControl.speedBoosted = false; // Powerup is no longer being used
+        charController.speedBoosted = false; // Powerup is no longer being used
+        decreasingFOV = true; // Time to resize the fov back to normal
 
         StartCoroutine(RespawnPowerup());
     }
@@ -108,13 +121,33 @@ public class Powerup : MonoBehaviour {
     {
         active = false; // Deactivate Powerup
 
-        CharacterControl.jumpBoosted = true; // True when powerup is being used
+        charController.jumpBoosted = true; // True when powerup is being used
 
-        boostedJumpHeight = CharacterControl.jumpHeight * multiplier; // Updates the target speed (to assign when powerup is being used)
+        boostedJumpHeight = charController.jumpHeight * multiplier; // Updates the target speed (to assign when powerup is being used)
         yield return new WaitForSeconds(duration);
-        CharacterControl.jumpBoosted = false; // Powerup is no longer being used
+        charController.jumpBoosted = false; // Powerup is no longer being used
 
         StartCoroutine(RespawnPowerup());
+    }
+    void IncreaseFOV()
+    {
+        if (charController.PlayerCam.fieldOfView < normalFOV + agilityFOVIncrease)
+            charController.PlayerCam.fieldOfView += .5f * Time.fixedDeltaTime * FOVTransitionTime * 100;
+
+        if(charController.PlayerCam.fieldOfView >= normalFOV + agilityFOVIncrease)
+        {
+            increasingFOV = false;
+        }
+    }
+    void DecreaseFOV()
+    {
+        if (charController.PlayerCam.fieldOfView > normalFOV )
+            charController.PlayerCam.fieldOfView += .5f * Time.fixedDeltaTime * FOVTransitionTime * 100;
+
+        if (charController.PlayerCam.fieldOfView <= normalFOV)
+        {
+            decreasingFOV = false;
+        }
     }
     IEnumerator RespawnPowerup()
     {

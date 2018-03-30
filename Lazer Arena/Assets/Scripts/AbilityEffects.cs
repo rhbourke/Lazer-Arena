@@ -6,210 +6,89 @@ using UnityEngine;
 public class AbilityEffects : MonoBehaviour {
 
     public AudioSource MovementSrc;
-    public AudioSource RocketAudioSrc;
+    public AudioSource AbilitySrc;
     public AudioSource JumpSrc;
 
-    int numJumps = 1;
-    public float feetDist;
+    public Transform ScoutBoostPos; // The position boost is emitted from, set to Ability By default
 
-    public Transform RocketPos;
-
-    GameObject RocketJumpTemporaryParticle;
+    GameObject ScoutBoostTemporaryParticle;
     GameObject LandingTemporaryParticle;
+    CharacterControl charController;
 
+    bool isMoving; 
     public bool movementEffects;
-    public static bool jumped;
+    [HideInInspector]
+    public bool jumped;
     bool landed = false;
     bool playedLandingSound = false;
-    int numLands = 1;
-    bool isMoving;
     bool hasPlayedStart = false;
+    bool scoutBoosting;
 
-    public bool rocketJumpEffects;
-    bool isRocketJumping;
+    int numLands = 1;
+    public float groundDist;
+    float timeSinceLastLanding;
 
     private void Start()
     {
-        // Grabs Globally set Effect sources
-        
-        RocketAudioSrc.clip = EffectManager._RocketJumpLoop;
+        charController = GetComponent<CharacterControl>();
     }
 
     void Update () {
-        //Updates the effects based on what abilities are being used
         UpdateEffects();
     }
 
 
     void UpdateEffects()
     {
-        // Play Ability Effects 
-        if (CharacterControl.isScout)
+        // First calls class based abilities
+        if (charController.isScout)
         {
             if (ClassManager._SBoostEnabled)
             {
-                RocketJumpCheck();
-                RocketJumpEffects();
+                ScoutBoostCheck();
+                ScoutBoostEffects();
             }
         }
-
-
-        // Play default movement effects
+        // Then calls default movement effects, that may be altered by class
         if(movementEffects)
             MovementEffects();
     }
 
-    void RocketJumpCheck()
-    {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.W) && CharacterControl.isScoutBoosting) // You just started Rocket Jumping
-        {
-            if (CharacterControl.isScoutBoosting)
-            {
-                isRocketJumping = true;
-                RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
-                PlayRocketSound();
-            }
-        }
-        if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift) && CharacterControl.isScoutBoosting) // You just started Rocket Jumping
-        {
-            if (CharacterControl.isScoutBoosting)
-            {
-                isRocketJumping = true;
-                RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
-                PlayRocketSound();
-            }
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || (Input.GetKeyUp(KeyCode.W))) // You just stopped Rocket Jumping
-        {
-            if (isRocketJumping)
-            {
-                PlayRocketSoundEnd();
-                DisableRocketParticle();
-            }
-            isRocketJumping = false;
-        }
-        if (CharacterControl.SFuel < 1)
-        {
-            if (isRocketJumping)
-            {
-                PlayRocketSoundEnd();
-                DisableRocketParticle();
-                isRocketJumping = false;
-            }
-            
-        }
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        {
-            if (isRocketJumping)
-            {
-                PlayRocketSoundEnd();
-                DisableRocketParticle();
-                isRocketJumping = false;
-            }
-        }
-        if (CharacterControl.isScoutBoosting)
-        {
-            if (!isRocketJumping)
-            {
-                isRocketJumping = true;
-                RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
-                PlayRocketSound();
-            }
-        }
-    }
-
-    void RocketJumpEffects()
-    {
-        if (isRocketJumping)
-        {
-            // Enable Effects
-            EnableRocketParticle();
-        }
-        else
-        {
-            // Disable Effects
-            DisableRocketParticle();
-        }
-    }
-
-    void PlayRocketSound()
-    {
-        RocketAudioSrc.clip = EffectManager._RocketJumpLoop;
-        RocketAudioSrc.loop = true;
-        if (!RocketAudioSrc.isPlaying) {
-            RocketAudioSrc.Play();
-        }
-    }
-    void PlayRocketSoundEnd()
-    {
-        RocketAudioSrc.loop = false;
-        RocketAudioSrc.clip = EffectManager._RocketJumpLoopEnd;
-        RocketAudioSrc.Play();
-    }
-
-    void EnableRocketParticle()
-    {
-        if (RocketJumpTemporaryParticle != null)
-        {
-            RocketJumpTemporaryParticle.transform.position = RocketPos.transform.position;
-            if (!RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
-            {
-                RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Play();
-            }
-        }
-    }
-
-    void DisableRocketParticle()
-    {
-        if (RocketJumpTemporaryParticle != null)
-        {
-            if (RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
-                RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Stop();
-            Destroy(RocketJumpTemporaryParticle, 3f);
-        }
-    }
-    float timeSinceLast = 0;
+    
     void MovementEffects()
     {
-        // Play the jump sound when jumping
         JumpSound();
+        LandingEffects();
+        HeadHit();
 
         // Play the default movement sounds that are class specific
         WalkingSound();
-
-        // Play dust particle and sound when landing
-        LandingEffects();
-
-        timeSinceLast += Time.deltaTime;
-
-        if (CharacterControl.headHit && timeSinceLast > .2f && !GetComponent<CharacterController>().isGrounded)
-        {
-            JumpSrc.PlayOneShot(EffectManager._HeadHit);
-            timeSinceLast = 0;
-        }
     }
 
+    
     void LandingEffects()
     {
+        timeSinceLastLanding += Time.deltaTime;
         if (!GetComponent<CharacterController>().isGrounded)
         {
             landed = false;
         }
 
-        if (!landed && GetComponent<CharacterController>().isGrounded)
+        if (!landed && GetComponent<CharacterController>().isGrounded && timeSinceLastLanding > .4f)
         {
+            timeSinceLastLanding = 0;
             playedLandingSound = false;
             landed = true;
             PlayLandingEffects();
         }
     }
+
     void PlayLandingEffects()
     {
-
-        // Dust particle effect played when landing. feetDist should be checked, it tells how far down to put the particle, maybe try to extend the collider up instead of down for each model so feet dist can stay the same.
+        // Dust particle effect played when landing. groundDist should be checked, it tells how far down to put the particle, maybe try to extend the collider up instead of down for each model so feet dist can stay the same.
         Quaternion rotation = Quaternion.identity;
         rotation.eulerAngles = new Vector3(-90, 0, 0);
-        LandingTemporaryParticle = Instantiate(EffectManager._LandingParticle, transform.position + transform.up * feetDist, rotation, this.gameObject.GetComponentInChildren<FX>().gameObject.transform) as GameObject;
+        LandingTemporaryParticle = Instantiate(EffectManager._LandingParticle, transform.position + transform.up * groundDist, rotation, this.gameObject.GetComponentInChildren<FX>().gameObject.transform) as GameObject;
         Destroy(LandingTemporaryParticle, 1.5f);
 
         if (numLands == 1 && !playedLandingSound)
@@ -237,6 +116,9 @@ public class AbilityEffects : MonoBehaviour {
             numLands = 1;
         }
     }
+
+    int numJumps = 1;
+
     void JumpSound()
     {
         if (jumped && (numJumps == 1))
@@ -264,11 +146,9 @@ public class AbilityEffects : MonoBehaviour {
             numJumps = 1;
         }
     }
+
     void WalkingSound()
     {
-        // Start moving sounds
-
-        
         if (GetComponent<CharacterController>().isGrounded && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
             isMoving = true;
@@ -281,15 +161,15 @@ public class AbilityEffects : MonoBehaviour {
             {
                 MovementSrc.loop = true;
 
-                if (CharacterControl.isScout)
+                if (charController.isScout)
                 {
                     ManageScoutSounds();
                 }
-                if (CharacterControl.isTank)
+                if (charController.isTank)
                 {
                     ManageTankSounds();
                 }
-                if (CharacterControl.isSupport)
+                if (charController.isSupport)
                 {
                     ManageScoutSounds();
                 }
@@ -297,7 +177,6 @@ public class AbilityEffects : MonoBehaviour {
                 if (!MovementSrc.isPlaying)
                     MovementSrc.Play();
             }
-
         }
         else
         {
@@ -311,9 +190,131 @@ public class AbilityEffects : MonoBehaviour {
             }
         }
     }
+
+    float timeSinceLastHeadHit = 0;
+    void HeadHit()
+    {
+        timeSinceLastHeadHit += Time.deltaTime;
+        if (charController.headHit && timeSinceLastHeadHit > .2f && !GetComponent<CharacterController>().isGrounded)
+        {
+            JumpSrc.PlayOneShot(EffectManager._HeadHit);
+            timeSinceLastHeadHit = 0;
+        }
+    }
+
+    void ScoutBoostCheck()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.W) && charController.isScoutBoosting) // You just started Scout boosting
+        {
+            if (charController.isScoutBoosting)
+            {
+                scoutBoosting = true;
+                ScoutBoostTemporaryParticle = Instantiate(EffectManager._ScoutBoostParticle, ScoutBoostPos) as GameObject;
+                PlayRocketSound();
+            }
+        }
+        if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift) && charController.isScoutBoosting) // You just started scout boosting
+        {
+            if (charController.isScoutBoosting)
+            {
+                scoutBoosting = true;
+                ScoutBoostTemporaryParticle = Instantiate(EffectManager._ScoutBoostParticle, ScoutBoostPos) as GameObject;
+                PlayRocketSound();
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || (Input.GetKeyUp(KeyCode.W))) // You just stopped Rocket Jumping
+        {
+            if (scoutBoosting)
+            {
+                PlayRocketSoundEnd();
+                DisableRocketParticle();
+            }
+            scoutBoosting = false;
+        }
+        if (charController.SFuel < 1)
+        {
+            if (scoutBoosting)
+            {
+                PlayRocketSoundEnd();
+                DisableRocketParticle();
+                scoutBoosting = false;
+            }
+            
+        }
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            if (scoutBoosting)
+            {
+                PlayRocketSoundEnd();
+                DisableRocketParticle();
+                scoutBoosting = false;
+            }
+        }
+        if (charController.isScoutBoosting)
+        {
+            if (!scoutBoosting)
+            {
+                scoutBoosting = true;
+                ScoutBoostTemporaryParticle = Instantiate(EffectManager._ScoutBoostParticle, ScoutBoostPos) as GameObject;
+                PlayRocketSound();
+            }
+        }
+    }
+
+    void ScoutBoostEffects()
+    {
+        if (scoutBoosting)
+        {
+            // Enable Effects
+            EnableRocketParticle();
+        }
+        else
+        {
+            // Disable Effects
+            DisableRocketParticle();
+        }
+    }
+
+    void PlayRocketSound()
+    {
+        AbilitySrc.clip = EffectManager._ScoutBoostLoop;
+        AbilitySrc.loop = true;
+        if (!AbilitySrc.isPlaying) {
+            AbilitySrc.Play();
+        }
+    }
+    void PlayRocketSoundEnd()
+    {
+        AbilitySrc.loop = false;
+        AbilitySrc.clip = EffectManager._RocketJumpLoopEnd;
+        AbilitySrc.Play();
+    }
+
+    void EnableRocketParticle()
+    {
+        if (ScoutBoostTemporaryParticle != null)
+        {
+            ScoutBoostTemporaryParticle.transform.position = ScoutBoostPos.transform.position;
+            if (!ScoutBoostTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
+            {
+                ScoutBoostTemporaryParticle.GetComponent<ParticleSystem>().Play();
+            }
+        }
+    }
+
+    void DisableRocketParticle()
+    {
+        if (ScoutBoostTemporaryParticle != null)
+        {
+            if (ScoutBoostTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
+                ScoutBoostTemporaryParticle.GetComponent<ParticleSystem>().Stop();
+            Destroy(ScoutBoostTemporaryParticle, 3f);
+        }
+    }
+    
     void ManageScoutSounds()
     {
-        if (CharacterControl.isScoutBoosting)
+        if (charController.isScoutBoosting)
         {
             StopCoroutine(PlayStartMoveSound(StartMovingSound()));
             MovementSrc.clip = EffectManager._ScoutRunLoop;
@@ -332,14 +333,14 @@ public class AbilityEffects : MonoBehaviour {
     }
     public AudioClip EndMovingSound()
     {
-        if (CharacterControl.isScout){
+        if (charController.isScout){
             return EffectManager._ScoutEndMove;
         }
         return null;
     }
     public AudioClip StartMovingSound()
     {
-        if (CharacterControl.isScout)
+        if (charController.isScout)
         {
             return EffectManager._ScoutStartMove;
         }

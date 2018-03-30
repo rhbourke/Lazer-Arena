@@ -13,9 +13,9 @@ public class ClassManager : MonoBehaviour {
     public static float _scoutSpeed;
     [Header("Scout")]
     [Space]
-    public float scoutSpeed = 1; // CHANGEABLE
+    public float scoutSpeed = 1; 
     public static float _scoutJumpHeight;
-    public float scoutJumpHeight = 5; // CHANGEABLE
+    public float scoutJumpHeight = 5; 
     public static float _SFuelRecharge;
     public float SFuelRechargeSpeed = 10;
     public static float _SFuelUse;
@@ -24,8 +24,17 @@ public class ClassManager : MonoBehaviour {
     public float SFuelRechargeTime = 3f;
     public static bool _SBoostEnabled;
     public bool SBoostEnabled;
+    public static float _SBoostMultiplier;
+    public float SBoostMultiplier;
+    public float sprintFOV;
+    public float transitDurToSprint;
+    public float transitDurToWalk;
+    public static float _sprintFOV;
+    public static float _transitDurToSprint;
+    public static float _transitDurToWalk;
 
-    
+
+
     public static float _tankSpeed;
     [Header("Tank")]
     [Space]
@@ -54,7 +63,10 @@ public class ClassManager : MonoBehaviour {
         _SFuelUse = SFuelUseSpeed;
         _SFuelRechargeTime = SFuelRechargeTime;
         _SBoostEnabled = SBoostEnabled;
-
+        _SBoostMultiplier = SBoostMultiplier;
+        _sprintFOV = sprintFOV;
+        _transitDurToSprint = transitDurToSprint;
+        _transitDurToWalk = transitDurToWalk;
 
         _tankSpeed = tankSpeed;
         _tankJumpHeight = tankJumpHeight;

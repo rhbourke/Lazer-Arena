@@ -198,48 +198,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
---- !u!1001 &109108875
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1012417765}
-    m_Modifications:
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -15.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 2.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0.39727885
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.91769797
-      objectReference: {fileID: 0}
-    - target: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e06bd1ba64c001b49a8fc1c057609278, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &110190109
 Prefab:
   m_ObjectHideFlags: 0
@@ -453,14 +411,9 @@ MeshCollider:
   m_Mesh: {fileID: 4300002, guid: 900e53dd850c9cc4281be6fa21bdfea5, type: 3}
 --- !u!4 &299274245 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab,
+  m_PrefabParentObject: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee,
     type: 2}
   m_PrefabInternal: {fileID: 1566614779}
---- !u!4 &489322204 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4561544858130120, guid: e06bd1ba64c001b49a8fc1c057609278,
-    type: 2}
-  m_PrefabInternal: {fileID: 109108875}
 --- !u!1001 &573839044
 Prefab:
   m_ObjectHideFlags: 0
@@ -565,13 +518,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a7e231a78c1394ca85ac94b6ef8b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1689900054815740, guid: 3c3ab60e9b0ab034f9f0eb21efbcdb76, type: 2}
   myClass: 0
-  startFOV: 60
-  sprintFOV: 69
-  transitDurToSprint: 0.6
-  transitDurToWalk: 0.8
-  sprintMultiplier: 2
-  gravity: -10.8
+  PlayerCam: {fileID: 0}
+  personalSpeed: 1
+  canJump: 1
+  jumpHeight: 5
+  gravity: -12
+  headHit: 0
+  isScout: 0
+  isTank: 0
+  isSupport: 0
+  isScoutBoosting: 0
+  SFuel: 100
+  jumpBoosted: 0
+  speedBoosted: 0
 --- !u!114 &606594960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,12 +545,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSrc: {fileID: 1531099301}
-  RocketAudioSrc: {fileID: 1149265974}
+  AbilitySrc: {fileID: 1149265974}
   JumpSrc: {fileID: 1257082304}
-  feetDist: -1
-  RocketPos: {fileID: 1149265973}
+  ScoutBoostPos: {fileID: 1149265973}
   movementEffects: 1
-  rocketJumpEffects: 1
+  jumped: 0
+  groundDist: -1
 --- !u!143 &606594961
 CharacterController:
   m_ObjectHideFlags: 0
@@ -602,7 +563,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -1197,7 +1158,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 299274245}
-  - {fileID: 489322204}
   m_Father: {fileID: 1737521846}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1211,7 +1171,7 @@ GameObject:
   - component: {fileID: 1149265973}
   - component: {fileID: 1149265974}
   m_Layer: 0
-  m_Name: RocketPos
+  m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1968,7 +1928,7 @@ GameObject:
   - component: {fileID: 1531099300}
   - component: {fileID: 1531099301}
   m_Layer: 0
-  m_Name: MovementSound
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2121,40 +2081,40 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1012417765}
     m_Modifications:
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_LocalPosition.x
       value: 17.43
       objectReference: {fileID: 0}
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_LocalPosition.y
       value: -1.14
       objectReference: {fileID: 0}
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_LocalPosition.z
       value: 17.9
       objectReference: {fileID: 0}
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4883372506078392, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+    - target: {fileID: 4934976782596240, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 443b9613fb3f83f458d252fd8da0a2ab, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 4cd76b9722018ea4fa07cfa670930aee, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1575114771
 GameObject:
@@ -2475,6 +2435,10 @@ MonoBehaviour:
   SFuelUseSpeed: 20
   SFuelRechargeTime: 3
   SBoostEnabled: 1
+  SBoostMultiplier: 1.5
+  sprintFOV: 70
+  transitDurToSprint: 0.6
+  transitDurToWalk: 0.8
   tankSpeed: 0.5
   tankJumpHeight: 4
   supportSpeed: 0.6

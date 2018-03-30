@@ -9,17 +9,32 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1875642404225592}
+  m_RootGameObject: {fileID: 1410300991012696}
   m_IsPrefabParent: 1
---- !u!1 &1368813447641606
+--- !u!1 &1410300991012696
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4170740819551434}
-  - component: {fileID: 108049091366403062}
+  - component: {fileID: 4934976782596240}
+  m_Layer: 0
+  m_Name: AgilityBoost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1680547013868384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4449825877925238}
+  - component: {fileID: 108654964632642668}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -27,19 +42,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1461702156223816
+--- !u!1 &1705325477072190
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4543975008347028}
-  - component: {fileID: 33739380897357674}
-  - component: {fileID: 23902452524221674}
-  - component: {fileID: 135960541080578542}
-  - component: {fileID: 114978353914389340}
-  - component: {fileID: 95946396254851574}
+  - component: {fileID: 4727048721172188}
+  - component: {fileID: 33894803380161872}
+  - component: {fileID: 23602106573422384}
+  - component: {fileID: 135141676124468898}
+  - component: {fileID: 114556292366390558}
+  - component: {fileID: 95485421222912860}
   m_Layer: 0
   m_Name: Powerup
   m_TagString: Untagged
@@ -47,68 +62,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1875642404225592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4561544858130120}
-  m_Layer: 0
-  m_Name: JumpBoost
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4170740819551434
+--- !u!4 &4449825877925238
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1368813447641606}
+  m_GameObject: {fileID: 1680547013868384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4561544858130120}
+  m_Father: {fileID: 4934976782596240}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4543975008347028
+--- !u!4 &4727048721172188
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461702156223816}
+  m_GameObject: {fileID: 1705325477072190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4561544858130120}
+  m_Father: {fileID: 4934976782596240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4561544858130120
+--- !u!4 &4934976782596240
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1875642404225592}
-  m_LocalRotation: {x: -0, y: -0.39727885, z: -0, w: 0.91769797}
-  m_LocalPosition: {x: -15.76, y: 0, z: 2.01}
+  m_GameObject: {fileID: 1410300991012696}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.43, y: -1.14, z: 17.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4543975008347028}
-  - {fileID: 4170740819551434}
+  - {fileID: 4727048721172188}
+  - {fileID: 4449825877925238}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -46.816, z: 0}
---- !u!23 &23902452524221674
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23602106573422384
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461702156223816}
+  m_GameObject: {fileID: 1705325477072190}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -137,20 +137,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33739380897357674
+--- !u!33 &33894803380161872
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461702156223816}
+  m_GameObject: {fileID: 1705325477072190}
   m_Mesh: {fileID: 4300004, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
---- !u!95 &95946396254851574
+--- !u!95 &95485421222912860
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461702156223816}
+  m_GameObject: {fileID: 1705325477072190}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8f79fa253c46dda4abed3f9a5ee83ad6, type: 2}
@@ -161,12 +161,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!108 &108049091366403062
+--- !u!108 &108654964632642668
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1368813447641606}
+  m_GameObject: {fileID: 1680547013868384}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
@@ -197,27 +197,29 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114978353914389340
+--- !u!114 &114556292366390558
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461702156223816}
+  m_GameObject: {fileID: 1705325477072190}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16764176c35b6c84293cbe74d52e5621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupType: 1
+  powerupType: 0
   multiplier: 1.8
   duration: 8
   respawnTime: 2
---- !u!135 &135960541080578542
+  agilityFOVIncrease: 15
+  FOVTransitionTime: 0.5
+--- !u!135 &135141676124468898
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461702156223816}
+  m_GameObject: {fileID: 1705325477072190}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
