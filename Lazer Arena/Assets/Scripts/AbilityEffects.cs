@@ -10,11 +10,12 @@ public class AbilityEffects : MonoBehaviour {
     public AudioSource JumpSrc;
 
     int numJumps = 1;
-
+    public float feetDist;
 
     public Transform RocketPos;
 
     GameObject RocketJumpTemporaryParticle;
+    GameObject LandingTemporaryParticle;
 
     public bool movementEffects;
     public static bool jumped;
@@ -60,29 +61,30 @@ public class AbilityEffects : MonoBehaviour {
 
     void RocketJumpCheck()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.W)) // You just started Rocket Jumping
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.W) && CharacterControl.isScoutBoosting) // You just started Rocket Jumping
         {
-            if (CharacterControl.SFuel > 1)
+            if (CharacterControl.isScoutBoosting)
             {
                 isRocketJumping = true;
                 RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
                 PlayRocketSound();
             }
         }
-        if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift)) // You just started Rocket Jumping
+        if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift) && CharacterControl.isScoutBoosting) // You just started Rocket Jumping
         {
-            if (CharacterControl.SFuel > 1)
+            if (CharacterControl.isScoutBoosting)
             {
                 isRocketJumping = true;
                 RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
                 PlayRocketSound();
             }
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.W)) // You just stopped Rocket Jumping
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || (Input.GetKeyUp(KeyCode.W))) // You just stopped Rocket Jumping
         {
             if (isRocketJumping)
             {
                 PlayRocketSoundEnd();
+                DisableRocketParticle();
             }
             isRocketJumping = false;
         }
@@ -95,6 +97,24 @@ public class AbilityEffects : MonoBehaviour {
                 isRocketJumping = false;
             }
             
+        }
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            if (isRocketJumping)
+            {
+                PlayRocketSoundEnd();
+                DisableRocketParticle();
+                isRocketJumping = false;
+            }
+        }
+        if (CharacterControl.isScoutBoosting)
+        {
+            if (!isRocketJumping)
+            {
+                isRocketJumping = true;
+                RocketJumpTemporaryParticle = Instantiate(EffectManager._RocketJumpParticle, RocketPos) as GameObject;
+                PlayRocketSound();
+            }
         }
     }
 
@@ -129,10 +149,13 @@ public class AbilityEffects : MonoBehaviour {
 
     void EnableRocketParticle()
     {
-        RocketJumpTemporaryParticle.transform.position = RocketPos.transform.position;
-        if (!RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
+        if (RocketJumpTemporaryParticle != null)
         {
-            RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Play();
+            RocketJumpTemporaryParticle.transform.position = RocketPos.transform.position;
+            if (!RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().isPlaying)
+            {
+                RocketJumpTemporaryParticle.GetComponent<ParticleSystem>().Play();
+            }
         }
     }
 
@@ -156,8 +179,6 @@ public class AbilityEffects : MonoBehaviour {
 
         // Play dust particle and sound when landing
         LandingEffects();
-
-
 
         timeSinceLast += Time.deltaTime;
 
@@ -184,8 +205,13 @@ public class AbilityEffects : MonoBehaviour {
     }
     void PlayLandingEffects()
     {
-        // Add dust poof particle instantiation here
-        // Add a landing sound here
+
+        // Dust particle effect played when landing. feetDist should be checked, it tells how far down to put the particle, maybe try to extend the collider up instead of down for each model so feet dist can stay the same.
+        Quaternion rotation = Quaternion.identity;
+        rotation.eulerAngles = new Vector3(-90, 0, 0);
+        LandingTemporaryParticle = Instantiate(EffectManager._LandingParticle, transform.position + transform.up * feetDist, rotation, this.gameObject.GetComponentInChildren<FX>().gameObject.transform) as GameObject;
+        Destroy(LandingTemporaryParticle, 1.5f);
+
         if (numLands == 1 && !playedLandingSound)
         {
             playedLandingSound = true;
@@ -289,6 +315,7 @@ public class AbilityEffects : MonoBehaviour {
     {
         if (CharacterControl.isScoutBoosting)
         {
+            StopCoroutine(PlayStartMoveSound(StartMovingSound()));
             MovementSrc.clip = EffectManager._ScoutRunLoop;
         }
         else

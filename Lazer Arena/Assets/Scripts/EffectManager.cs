@@ -68,6 +68,7 @@ public class EffectManager : MonoBehaviour {
         _LandingSound2 = LandingSound2;
         _LandingSound3 = LandingSound3;
         _LandingSound4 = LandingSound4;
+        _LandingParticle = LandingParticle;
         _HeadHit = HeadHitSound;
 
         _RocketJumpParticle = RocketJumpParticle;

@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 606594961}
   - component: {fileID: 606594959}
   - component: {fileID: 606594960}
+  - component: {fileID: 606594962}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Player
@@ -544,7 +545,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606594957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.18, y: 20.26, z: -17.06}
+  m_LocalPosition: {x: 0.18, y: -0.6, z: -2.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1462549012}
@@ -585,6 +586,7 @@ MonoBehaviour:
   MovementSrc: {fileID: 1531099301}
   RocketAudioSrc: {fileID: 1149265974}
   JumpSrc: {fileID: 1257082304}
+  feetDist: -1
   RocketPos: {fileID: 1149265973}
   movementEffects: 1
   rocketJumpEffects: 1
@@ -605,6 +607,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &606594962
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 606594957}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &639011883
 Prefab:
   m_ObjectHideFlags: 0
@@ -1328,7 +1345,8 @@ MonoBehaviour:
   LandingSound2: {fileID: 8300000, guid: f9d28b6c1dc9f884bbf5d74c2bb73e3c, type: 3}
   LandingSound3: {fileID: 8300000, guid: ab0b2b97b0438fe49b2a3db023b83ba5, type: 3}
   LandingSound4: {fileID: 8300000, guid: f2158d0de71f42c4fbc2ad8d5c5b7f1d, type: 3}
-  LandingParticle: {fileID: 0}
+  LandingParticle: {fileID: 1121765557898384, guid: cdf7e1a68d1f9994597be0ff27b98549,
+    type: 2}
   HeadHitSound: {fileID: 8300000, guid: 06a6adf00e439e149abd891292799c01, type: 3}
   ScoutStartMove: {fileID: 8300000, guid: 5b9855b962ddec648b1490a63bbe74e6, type: 3}
   ScoutWalkLoop: {fileID: 8300000, guid: 9e06169c750543245a8c9a5a3826e92d, type: 3}
@@ -2353,6 +2371,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1818007511}
+  - component: {fileID: 1818007512}
   m_Layer: 0
   m_Name: FX
   m_TagString: Untagged
@@ -2376,6 +2395,17 @@ Transform:
   m_Father: {fileID: 606594958}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1818007512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1818007510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8254572f201b87a44bc32caa45d19e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1849374141 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
