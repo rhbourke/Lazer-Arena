@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
 {
-
-    public GameObject explosion;
-
     public enum Class 
     {
         Scout,
@@ -32,10 +29,10 @@ public class CharacterControl : MonoBehaviour
     CharacterController charControl;
     
     public float personalSpeed = 1.0f; // The speed this character should travel at by default -- This variable is adjusted by speed boost and class type.
-    
-    
-    
 
+
+
+    bool living;
     float speedMultiplier;
     [HideInInspector]
     public bool canJump = true;
@@ -92,27 +89,35 @@ public class CharacterControl : MonoBehaviour
     void Update()
     {
 
-        //ExplosionTest
-        if (Input.GetKeyDown(KeyCode.R)){
-            Quaternion rotation = Quaternion.identity;
-            rotation.eulerAngles = new Vector3(-90, 0, 0);
-            Instantiate(explosion, transform.position, rotation, transform);
-        }
+        
 
         // Update variables based on class
         UpdateClass();
 
-        // Check if any boosts are active, and use these multipliers
-        BoostCheck();
+        if (GetComponent<Combat>().isAlive) // IF ALIVE, MOVE
+        {
+            living = true;
 
-        // Calculate multiplier based on current movement conditions(sprinting, diagonal movement... etc)
-        CalculateSpeedMultiplier();
+            // Check if any boosts are active, and use these multipliers
+            BoostCheck();
 
-        // Calculate target movement 
-        CalculateMovement();
+            // Calculate multiplier based on current movement conditions(sprinting, diagonal movement... etc)
+            CalculateSpeedMultiplier();
 
-        // Apply target movement
-        charControl.Move(moveDirection * Time.deltaTime);
+            // Calculate target movement 
+            CalculateMovement();
+
+            // Apply target movement
+            charControl.Move(moveDirection * Time.deltaTime);
+
+        }
+        else if (living) // IF PLAYER JUST DIED, RESPAWN HIM
+        {
+            living = false;
+
+            // Respawn the player
+        }
+            
     }
 
     void UpdateClass()

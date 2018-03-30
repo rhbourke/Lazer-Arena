@@ -13,6 +13,10 @@ public class ClassManager : MonoBehaviour {
     public static float _scoutSpeed;
     [Header("Scout")]
     [Space]
+    public float ScoutVitality;
+    public static float _ScoutVitality;
+    public float ScoutPower;
+    public static float _ScoutPower;
     public float scoutSpeed = 1; 
     public static float _scoutJumpHeight;
     public float scoutJumpHeight = 5; 
@@ -56,7 +60,8 @@ public class ClassManager : MonoBehaviour {
     {
         // Update static variables to the public version
 
-
+        _ScoutVitality = ScoutVitality;
+        _ScoutPower = ScoutPower;
         _scoutSpeed = scoutSpeed;
         _scoutJumpHeight = scoutJumpHeight;
         _SFuelRecharge = SFuelRechargeSpeed;

@@ -20,6 +20,9 @@ public class EffectManager : MonoBehaviour {
     public static AudioClip _HeadHit;
     public static GameObject _LandingParticle;
     public static GameObject _ScoutBoostParticle;
+    public static GameObject _DeathExplosion;
+
+    public GameObject DeathExplosion;
 
     [Header ("Jumping")]
     public AudioClip JumpSound;
@@ -53,6 +56,8 @@ public class EffectManager : MonoBehaviour {
 
     private void Awake()
     {
+        _DeathExplosion = DeathExplosion;
+
         _JumpSound = JumpSound;
         _JumpSound2 = JumpSound2;
         _JumpSound3 = JumpSound3;

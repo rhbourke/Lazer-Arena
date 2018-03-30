@@ -15,6 +15,7 @@ public class AbilityEffects : MonoBehaviour {
     GameObject LandingTemporaryParticle;
     CharacterControl charController;
 
+    bool living;
     bool isMoving; 
     public bool movementEffects;
     [HideInInspector]
@@ -40,18 +41,36 @@ public class AbilityEffects : MonoBehaviour {
 
     void UpdateEffects()
     {
-        // First calls class based abilities
-        if (charController.isScout)
-        {
-            if (ClassManager._SBoostEnabled)
+        // IF ALIVE
+        if (GetComponent<Combat>().isAlive) {
+            living = true;
+
+            // First calls class based abilities
+            if (charController.isScout)
             {
-                ScoutBoostCheck();
-                ScoutBoostEffects();
+                if (ClassManager._SBoostEnabled)
+                {
+                    ScoutBoostCheck();
+                    ScoutBoostEffects();
+                }
+            }
+        // Then calls default movement effects, that may be altered by class
+        if (movementEffects)
+            MovementEffects();
+        }
+
+        // IF DEAD
+        if (!GetComponent<Combat>().isAlive)
+        {
+            if (living)
+            {
+                living = false;
+                Quaternion rotation = Quaternion.identity;
+                rotation.eulerAngles = new Vector3(-90, 0, 0);
+                Instantiate(EffectManager._DeathExplosion, transform.position, rotation, transform);
             }
         }
-        // Then calls default movement effects, that may be altered by class
-        if(movementEffects)
-            MovementEffects();
+
     }
 
     

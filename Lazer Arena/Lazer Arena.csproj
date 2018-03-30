@@ -292,6 +292,7 @@
     <Compile Include="Assets\Scripts\AbilityEffects.cs" />
     <Compile Include="Assets\Scripts\CharacterControl.cs" />
     <Compile Include="Assets\Scripts\ClassManager.cs" />
+    <Compile Include="Assets\Scripts\Combat.cs" />
     <Compile Include="Assets\Scripts\EffectManager.cs" />
     <Compile Include="Assets\Scripts\FX.cs" />
     <Compile Include="Assets\Scripts\Powerup.cs" />
