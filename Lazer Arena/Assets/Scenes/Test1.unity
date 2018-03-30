@@ -1329,6 +1329,8 @@ MonoBehaviour:
   LandingSound3: {fileID: 8300000, guid: ab0b2b97b0438fe49b2a3db023b83ba5, type: 3}
   LandingSound4: {fileID: 8300000, guid: f2158d0de71f42c4fbc2ad8d5c5b7f1d, type: 3}
   LandingParticle: {fileID: 0}
+  HeadHitSound: {fileID: 8300000, guid: 06a6adf00e439e149abd891292799c01, type: 3}
+  ScoutStartMove: {fileID: 8300000, guid: 5b9855b962ddec648b1490a63bbe74e6, type: 3}
   ScoutWalkLoop: {fileID: 8300000, guid: 9e06169c750543245a8c9a5a3826e92d, type: 3}
   ScoutRunLoop: {fileID: 8300000, guid: 99a95685e4fc6f94e8551fd18a8a17e9, type: 3}
   ScoutEndMove: {fileID: 8300000, guid: 5a3e24e40c679734598d13acc2201560, type: 3}

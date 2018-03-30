@@ -22,6 +22,7 @@ public class AbilityEffects : MonoBehaviour {
     bool playedLandingSound = false;
     int numLands = 1;
     bool isMoving;
+    bool hasPlayedStart = false;
 
     public bool rocketJumpEffects;
     bool isRocketJumping;
@@ -144,6 +145,7 @@ public class AbilityEffects : MonoBehaviour {
             Destroy(RocketJumpTemporaryParticle, 3f);
         }
     }
+    float timeSinceLast = 0;
     void MovementEffects()
     {
         // Play the jump sound when jumping
@@ -154,6 +156,16 @@ public class AbilityEffects : MonoBehaviour {
 
         // Play dust particle and sound when landing
         LandingEffects();
+
+
+
+        timeSinceLast += Time.deltaTime;
+
+        if (CharacterControl.headHit && timeSinceLast > .2f && !GetComponent<CharacterController>().isGrounded)
+        {
+            JumpSrc.PlayOneShot(EffectManager._HeadHit);
+            timeSinceLast = 0;
+        }
     }
 
     void LandingEffects()
@@ -191,7 +203,6 @@ public class AbilityEffects : MonoBehaviour {
             playedLandingSound = true;
             JumpSrc.PlayOneShot(EffectManager._LandingSound3);
             numLands++;
-            Debug.Log("Jump3");
         }
         if (numLands == 4 && !playedLandingSound)
         {
@@ -231,35 +242,42 @@ public class AbilityEffects : MonoBehaviour {
     {
         // Start moving sounds
 
-
+        
         if (GetComponent<CharacterController>().isGrounded && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
-            //If walking, play these sounds
-
-
-            MovementSrc.loop = true;
-
-            if (CharacterControl.isScout)
-            {
-                ManageScoutSounds();
-            }
-            if (CharacterControl.isTank)
-            {
-                ManageTankSounds();
-            }
-            if (CharacterControl.isSupport)
-            {
-                ManageScoutSounds();
-            }
-
             isMoving = true;
+            if (!hasPlayedStart)
+            {
+                StartCoroutine(PlayStartMoveSound(StartMovingSound()));
+            }
 
-            if (!MovementSrc.isPlaying)
-                MovementSrc.Play();
+            if (hasPlayedStart)
+            {
+                MovementSrc.loop = true;
+
+                if (CharacterControl.isScout)
+                {
+                    ManageScoutSounds();
+                }
+                if (CharacterControl.isTank)
+                {
+                    ManageTankSounds();
+                }
+                if (CharacterControl.isSupport)
+                {
+                    ManageScoutSounds();
+                }
+
+                if (!MovementSrc.isPlaying)
+                    MovementSrc.Play();
+            }
+
         }
         else
         {
+            StopCoroutine(PlayStartMoveSound(StartMovingSound()));
             MovementSrc.clip = null;
+            hasPlayedStart = false;
             if (isMoving)
             {
                 MovementSrc.PlayOneShot(EndMovingSound());
@@ -269,30 +287,12 @@ public class AbilityEffects : MonoBehaviour {
     }
     void ManageScoutSounds()
     {
-        if (!Input.GetKey(KeyCode.LeftShift))
+        if (CharacterControl.isScoutBoosting)
         {
+            MovementSrc.clip = EffectManager._ScoutRunLoop;
+        }
+        else
             MovementSrc.clip = EffectManager._ScoutWalkLoop;
-        }
-        if (Input.GetKey(KeyCode.LeftShift) && !ClassManager._SBoostEnabled)
-        {
-            MovementSrc.clip = EffectManager._ScoutWalkLoop;
-        }
-        if (isRocketJumping)
-        {
-            if (CharacterControl.SFuel < 1)
-            {
-                MovementSrc.clip = EffectManager._ScoutWalkLoop;
-                isRocketJumping = false;
-            }
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                MovementSrc.clip = EffectManager._ScoutRunLoop;
-            }
-        }
-        if (CharacterControl.SFuel < 1)
-        {
-            MovementSrc.clip = EffectManager._ScoutWalkLoop;
-        }
 
     }
     void ManageTankSounds()
@@ -309,6 +309,23 @@ public class AbilityEffects : MonoBehaviour {
             return EffectManager._ScoutEndMove;
         }
         return null;
+    }
+    public AudioClip StartMovingSound()
+    {
+        if (CharacterControl.isScout)
+        {
+            return EffectManager._ScoutStartMove;
+        }
+        return null;
+    }
+    IEnumerator PlayStartMoveSound(AudioClip StartMoveSound)
+    {
+        MovementSrc.loop = false;
+        MovementSrc.clip = StartMoveSound;
+        if(!MovementSrc.isPlaying)
+            MovementSrc.Play();
+        yield return new WaitForSeconds(StartMoveSound.length);
+        hasPlayedStart = true;
     }
 }
 

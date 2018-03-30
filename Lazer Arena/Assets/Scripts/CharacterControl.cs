@@ -39,12 +39,12 @@ public class CharacterControl : MonoBehaviour
     public static bool canJump = true;
     public static float jumpHeight = 5.0f;
     public float gravity;
-
+    public static bool headHit;
     float prevY;
     Vector3 moveDirection;
 
     // Abilities
-    public static bool isScoutBoosting;
+    public static bool isScoutBoosting = false;
     public static float SFuel = 100f;
     bool canRechargeSFuel;
 
@@ -97,8 +97,12 @@ public class CharacterControl : MonoBehaviour
             {
                 // Change speed based on whether or not player is using scout boost
                 ScoutBoost();
-            } else
+            }
+            else
+            {
                 speedMultiplier = personalSpeed;
+                isScoutBoosting = false;
+            }
         }
         else {
             // default speed to class default speed
@@ -138,9 +142,12 @@ public class CharacterControl : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.up * 1.2f, 1.2f))
         {
+            headHit = true;
             //Hit your head, fall back down
             moveDirection.y -= jumpHeight;
         }
+        else
+            headHit = false;
 
         // Apply Gravity
         moveDirection.y += gravity * Time.deltaTime;

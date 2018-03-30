@@ -7,6 +7,7 @@ public class EffectManager : MonoBehaviour {
     public static AudioClip _JumpSound2;
     public static AudioClip _JumpSound3;
     public static AudioClip _JumpSound4;
+    public static AudioClip _ScoutStartMove;
     public static AudioClip _ScoutWalkLoop;
     public static AudioClip _ScoutRunLoop;
     public static AudioClip _ScoutEndMove;
@@ -16,6 +17,8 @@ public class EffectManager : MonoBehaviour {
     public static AudioClip _LandingSound2;
     public static AudioClip _LandingSound3;
     public static AudioClip _LandingSound4;
+    public static AudioClip _HeadHit;
+    public static GameObject _LandingParticle;
     public static GameObject _RocketJumpParticle;
 
     [Header ("Jumping")]
@@ -32,17 +35,20 @@ public class EffectManager : MonoBehaviour {
     public AudioClip LandingSound3;
     public AudioClip LandingSound4;
     public GameObject LandingParticle;
+    [Space]
+    public AudioClip HeadHitSound;
 
 
     [Space]
     [Header("Scout")]
+    public AudioClip ScoutStartMove;
     public AudioClip ScoutWalkLoop;
     public AudioClip ScoutRunLoop;
     public AudioClip ScoutEndMove;
     public AudioClip RocketJumpLoop;
     public AudioClip RocketJumpLoopEnd;
     public GameObject RocketJumpParticle;
-
+    
 
 
     private void Awake()
@@ -54,6 +60,7 @@ public class EffectManager : MonoBehaviour {
         _ScoutWalkLoop = ScoutWalkLoop;
         _ScoutRunLoop = ScoutRunLoop;
         _ScoutEndMove = ScoutEndMove;
+        _ScoutStartMove = ScoutStartMove;
         _RocketJumpLoop = RocketJumpLoop;
         _RocketJumpLoopEnd = RocketJumpLoopEnd;
 
@@ -61,6 +68,7 @@ public class EffectManager : MonoBehaviour {
         _LandingSound2 = LandingSound2;
         _LandingSound3 = LandingSound3;
         _LandingSound4 = LandingSound4;
+        _HeadHit = HeadHitSound;
 
         _RocketJumpParticle = RocketJumpParticle;
     }
