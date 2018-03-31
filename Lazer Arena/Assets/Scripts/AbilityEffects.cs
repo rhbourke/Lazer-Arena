@@ -66,7 +66,7 @@ public class AbilityEffects : MonoBehaviour {
             {
                 living = false;
                 Quaternion rotation = Quaternion.identity;
-                rotation.eulerAngles = new Vector3(-90, 0, 0);
+                rotation.eulerAngles = new Vector3(0, 0, 0);
                 Instantiate(EffectManager._DeathExplosion, transform.position, rotation, transform);
             }
         }
@@ -276,6 +276,15 @@ public class AbilityEffects : MonoBehaviour {
                 scoutBoosting = true;
                 ScoutBoostTemporaryParticle = Instantiate(EffectManager._ScoutBoostParticle, ScoutBoostPos) as GameObject;
                 PlayRocketSound();
+            }
+        }
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            if (scoutBoosting)
+            {
+                PlayRocketSoundEnd();
+                DisableRocketParticle();
+                scoutBoosting = false;
             }
         }
     }

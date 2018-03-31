@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 442}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
-  controlID: 5453
+  controlID: 15167
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 5454
+  controlID: 15118
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -185,9 +185,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.1587143, y: -0.59262323, z: 0.723413}
+    m_Target: {x: -13.6015415, y: -0.02410677, z: 2.2068293}
     speed: 2
-    m_Value: {x: -0.1587143, y: -0.59262323, z: 0.723413}
+    m_Value: {x: -13.6015415, y: -0.02410677, z: 2.2068293}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -211,13 +211,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.15613396, y: -0.33073455, z: 0.055581674, w: 0.9290573}
+    m_Target: {x: -0.022248697, y: 0.4885373, z: -0.012462195, w: -0.8721703}
     speed: 2
-    m_Value: {x: -0.15613396, y: 0.33073455, z: -0.055581674, w: -0.92905724}
+    m_Value: {x: -0.022248697, y: 0.4885373, z: -0.012462196, w: -0.8721704}
   m_Size:
-    m_Target: 4.5357137
+    m_Target: 10.307133
     speed: 2
-    m_Value: 4.5357137
+    m_Value: 10.307133
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -308,9 +308,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ea2c0000
-    m_LastClickedID: 11498
-    m_ExpandedIDs: 96b8f9ff16f5f9ff9efbffff00000000ae2c0000d02c0000d42c0000
+    m_SelectedIDs: 1e86f5ff
+    m_LastClickedID: -686562
+    m_ExpandedIDs: 0aa1f8ff6afbffff98fbffff00000000ac2c0000422d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -397,19 +397,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\bfros\Documents\Lazer-Arena\Lazer Arena
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a280000
-    m_LastClickedID: 10394
-    m_ExpandedIDs: 000000009a280000dc2800001e290000ea2b000000ca9a3bffffff7f
+    m_SelectedIDs: d8280000
+    m_LastClickedID: 10456
+    m_ExpandedIDs: 00000000a0280000e228000024290000fc2a0000002c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -437,7 +437,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009a280000dc2800001e290000ea2b000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000a0280000e228000024290000fc2a0000002c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -462,10 +462,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: ea2c0000
-    m_LastClickedInstanceID: 11498
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: 88340000
+    m_SelectedInstanceIDs: 1e86f5ff
+    m_LastClickedInstanceID: -686562
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: 88340000bc2b00000866f6ff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

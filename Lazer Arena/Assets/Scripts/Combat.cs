@@ -10,7 +10,10 @@ public class Combat : MonoBehaviour {
     float power;
     public float range;
     GameObject enemy;
+    GameObject breakableObj;
     float holdTime = 0;
+    float holdTimeEnviornment = 0;
+    bool killedObj;
 
     void Start () {
         charControl = GetComponent<CharacterControl>();
@@ -31,7 +34,7 @@ public class Combat : MonoBehaviour {
                 RaycastHit hit;
                 if (Physics.Raycast(charControl.PlayerCam.transform.position, charControl.PlayerCam.transform.forward * range, out hit))
                 {
-                    if (hit.collider.gameObject.GetComponent<Combat>() != null)
+                    if (hit.collider.gameObject.GetComponent<Combat>() != null && hit.collider.gameObject != this.gameObject)
                     {
                         if (hit.collider.gameObject.GetComponent<Combat>().isAlive) { 
                             enemy = hit.collider.gameObject;
@@ -41,6 +44,15 @@ public class Combat : MonoBehaviour {
                     }
                     else
                         holdTime = 0;
+
+                    if (hit.collider.gameObject.GetComponent<BreakableObject>() != null)
+                    {
+                        breakableObj = hit.collider.gameObject;
+                        killedObj = false;
+                        DamageObject(breakableObj);
+                    }
+                    else
+                        holdTimeEnviornment = 0;
                 }
             }
         } 
@@ -51,6 +63,18 @@ public class Combat : MonoBehaviour {
         if(holdTime >= (targetPlayer.GetComponent<Combat>().vitality / targetPlayer.GetComponent<Combat>().power))
         {
             targetPlayer.GetComponent<Combat>().isAlive = false;
+        }
+    }
+    void DamageObject(GameObject targetObject)
+    {
+        if (!killedObj) { 
+            holdTimeEnviornment += Time.deltaTime;
+            if (holdTimeEnviornment >= targetObject.GetComponent<BreakableObject>().objKillTime)
+            {
+                targetObject.GetComponent<BreakableObject>().KillMe();
+                killedObj = true;
+                holdTimeEnviornment = 0;
+            }
         }
     }
 }
