@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class DontRenderMeLocal : MonoBehaviour {
 	
-	void Start () {
-        
-	}
-	
-	// Do not render this gameobj
+
+	// Do not render this gameobj. DISABLE THIS COMPONENT IF YOU ARE NOT THE LOCAL PLAYER
 	void Update () {
         gameObject.GetComponent<Renderer>().enabled = false;
     }
