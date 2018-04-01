@@ -38,32 +38,52 @@ public class Combat : MonoBehaviour {
                     {
                         if (hit.collider.gameObject.GetComponent<Combat>().isAlive)
                         {
-                            enemy = hit.collider.gameObject;
+                            if (hit.collider.gameObject != enemy)
+                            {
+                                holdTime = 0;
+                            }
+                  
                             Debug.Log("Hit player at range of " + hit.distance);
+                            enemy = hit.collider.gameObject;
                             DamageEnemy(enemy);
                         }
                     }
                     else
+                    {
                         holdTime = 0;
+                        enemy = null;
+                    }
 
                     if (hit.collider.gameObject.GetComponent<BreakableObject>() != null)
                     {
+                        if (hit.collider.gameObject != breakableObj)
+                        {
+                            holdTimeEnviornment = 0;
+                        }
+                        Debug.Log("Hit object at range of " + hit.distance);
                         breakableObj = hit.collider.gameObject;
                         killedObj = false;
                         DamageObject(breakableObj);
                     }
                     else
+                    {
                         holdTimeEnviornment = 0;
+                        breakableObj = null;
+                    }
                 }
                 else
                 {
                     holdTime = 0;
                     holdTimeEnviornment = 0;
+                    breakableObj = null;
+                    enemy = null;
                 }
             } else
             {
                 holdTime = 0;
                 holdTimeEnviornment = 0;
+                breakableObj = null;
+                enemy = null;
             }
         } 
 	}
@@ -75,6 +95,7 @@ public class Combat : MonoBehaviour {
             targetPlayer.GetComponent<Combat>().isAlive = false;
             holdTime = 0;
             holdTimeEnviornment = 0;
+            enemy = null;
         }
     }
     void DamageObject(GameObject targetObject)
