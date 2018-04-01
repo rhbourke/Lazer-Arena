@@ -408,6 +408,11 @@ Prefab:
       propertyPath: m_Name
       value: DestructableCube (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114336956261292642, guid: 606f1de287c6fb7468d96f112ee4d015,
+        type: 2}
+      propertyPath: explodes
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 606f1de287c6fb7468d96f112ee4d015, type: 2}
   m_IsPrefabParent: 0
@@ -2414,6 +2419,11 @@ Prefab:
     - target: {fileID: 1999924701347008, guid: 606f1de287c6fb7468d96f112ee4d015, type: 2}
       propertyPath: m_Name
       value: DestructableCube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114336956261292642, guid: 606f1de287c6fb7468d96f112ee4d015,
+        type: 2}
+      propertyPath: explodes
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 606f1de287c6fb7468d96f112ee4d015, type: 2}

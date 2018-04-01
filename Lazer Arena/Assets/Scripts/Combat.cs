@@ -36,7 +36,8 @@ public class Combat : MonoBehaviour {
                 {
                     if (hit.collider.gameObject.GetComponent<Combat>() != null && hit.collider.gameObject != this.gameObject)
                     {
-                        if (hit.collider.gameObject.GetComponent<Combat>().isAlive) { 
+                        if (hit.collider.gameObject.GetComponent<Combat>().isAlive)
+                        {
                             enemy = hit.collider.gameObject;
                             Debug.Log("Hit player at range of " + hit.distance);
                             DamageEnemy(enemy);
@@ -54,6 +55,15 @@ public class Combat : MonoBehaviour {
                     else
                         holdTimeEnviornment = 0;
                 }
+                else
+                {
+                    holdTime = 0;
+                    holdTimeEnviornment = 0;
+                }
+            } else
+            {
+                holdTime = 0;
+                holdTimeEnviornment = 0;
             }
         } 
 	}
@@ -63,6 +73,8 @@ public class Combat : MonoBehaviour {
         if(holdTime >= (targetPlayer.GetComponent<Combat>().vitality / targetPlayer.GetComponent<Combat>().power))
         {
             targetPlayer.GetComponent<Combat>().isAlive = false;
+            holdTime = 0;
+            holdTimeEnviornment = 0;
         }
     }
     void DamageObject(GameObject targetObject)
