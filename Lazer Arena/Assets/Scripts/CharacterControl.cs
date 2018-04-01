@@ -206,13 +206,17 @@ public class CharacterControl : MonoBehaviour
             moveDirection = new Vector3(Input.GetAxis("Horizontal") * speedMultiplier * 10, moveDirection.y, Input.GetAxis("Vertical") * speedMultiplier * 10);
             moveDirection = transform.TransformDirection(moveDirection);
         }
-        RaycastHit hitInfo;
 
-        if (Physics.SphereCast(transform.position, 3f, transform.up * 1.2f, out hitInfo, 1.2f))
+        if (Physics.Raycast(transform.position, transform.up * 1.2f,  1.2f))
         {
             headHit = true;
             //Hit your head, fall back down
-            moveDirection.y -= jumpHeight;
+
+            
+            if(!(moveDirection.y < gravity))
+            {
+                moveDirection.y -= jumpHeight;
+            }
         }
         else
             headHit = false;
