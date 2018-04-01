@@ -1571,6 +1571,16 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 143747114127350244, guid: 1e7629e71a3a5784b90fc153abbccaad,
+        type: 2}
+      propertyPath: m_SlopeLimit
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 143747114127350244, guid: 1e7629e71a3a5784b90fc153abbccaad,
+        type: 2}
+      propertyPath: m_StepOffset
+      value: 0.13
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54213442736477700, guid: 1e7629e71a3a5784b90fc153abbccaad, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1e7629e71a3a5784b90fc153abbccaad, type: 2}
