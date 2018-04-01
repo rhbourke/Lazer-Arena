@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+<<<<<<< HEAD
 # Visual Studio 2015
+=======
+# Visual Studio 2017
+>>>>>>> e3451a4bd4a4f09c00d98eb0b9f5a315c088b183
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazer Arena.Plugins", "Lazer Arena.Plugins.csproj", "{E33377EE-0DD4-148C-0B7F-72F36B2BB32C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazer Arena", "Lazer Arena.csproj", "{17056B94-9EE9-9AB1-8AEB-655C200E35A4}"
