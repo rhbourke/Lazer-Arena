@@ -207,11 +207,16 @@ public class CharacterControl : MonoBehaviour
             moveDirection = transform.TransformDirection(moveDirection);
         }
 
-        if (Physics.Raycast(transform.position, transform.up * 1.2f, 1.2f))
+        if (Physics.Raycast(transform.position, transform.up * 1.2f,  1.2f))
         {
             headHit = true;
             //Hit your head, fall back down
-            moveDirection.y -= jumpHeight;
+
+            
+            if(!(moveDirection.y < gravity))
+            {
+                moveDirection.y -= jumpHeight;
+            }
         }
         else
             headHit = false;

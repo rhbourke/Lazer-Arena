@@ -22,7 +22,9 @@ public class EffectManager : MonoBehaviour {
     public static GameObject _ScoutBoostParticle;
     public static GameObject _DeathExplosion;
     public static GameObject _Lazer;
+    public static GameObject _LazerExplosion;
 
+    public GameObject LazerExplosion;
     public GameObject Lazer;
     public GameObject DeathExplosion;
 
@@ -58,6 +60,7 @@ public class EffectManager : MonoBehaviour {
 
     private void Awake()
     {
+        _LazerExplosion = LazerExplosion;
         _Lazer = Lazer;
         _DeathExplosion = DeathExplosion;
 

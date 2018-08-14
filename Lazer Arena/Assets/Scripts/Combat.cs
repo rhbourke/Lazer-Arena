@@ -70,6 +70,12 @@ public class Combat : MonoBehaviour {
                         holdTimeEnviornment = 0;
                         breakableObj = null;
                     }
+
+                    // Do line renderer stuff that ends at hit.point
+                    GetComponent<AbilityEffects>().lazerShootingHit = true;
+                    GetComponent<AbilityEffects>().lazerShootingAir = false;
+                    GetComponent<AbilityEffects>().LazerHitPoint = hit.point;
+                    GetComponent<AbilityEffects>().LazerHitRot = Quaternion.LookRotation(hit.normal);
                 }
                 else
                 {
@@ -77,6 +83,10 @@ public class Combat : MonoBehaviour {
                     holdTimeEnviornment = 0;
                     breakableObj = null;
                     enemy = null;
+
+                    // Do alternative line renderer  stuff
+                    GetComponent<AbilityEffects>().lazerShootingAir = true;
+                    GetComponent<AbilityEffects>().lazerShootingHit = false;
                 }
             } else
             {
@@ -84,6 +94,10 @@ public class Combat : MonoBehaviour {
                 holdTimeEnviornment = 0;
                 breakableObj = null;
                 enemy = null;
+
+                // Disable all line rendering
+                GetComponent<AbilityEffects>().lazerShootingAir = false;
+                GetComponent<AbilityEffects>().lazerShootingHit = false;
             }
         } 
 	}
