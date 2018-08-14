@@ -41,12 +41,10 @@ public class AbilityEffects : MonoBehaviour {
     public GameObject LazerEndPoint;
     public bool lazerShootingHit;
     public bool lazerShootingAir;
-    public GameObject LazerRenderer;
     LineRenderer lazerRend;
     public float lazerPulseSpeed;
     public float maxLazerWidth;
     public float minLazerWidth;
-    public float lazerFadeSpeed = .9f;
 
     [HideInInspector]
     public Vector3 LazerHitPoint;
@@ -56,8 +54,13 @@ public class AbilityEffects : MonoBehaviour {
 
     private void Start()
     {
+<<<<<<< HEAD
         SetWeaponType();
         lazerRend = LazerRenderer.GetComponent<LineRenderer>();
+=======
+
+        lazerRend = GetComponent<LineRenderer>();
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
         lazerRend.enabled = false;
 
         charController = GetComponent<CharacterControl>();
@@ -424,11 +427,17 @@ public class AbilityEffects : MonoBehaviour {
     float i = 0;
     void LazerLineRender()
     {
+<<<<<<< HEAD
 
         if (lazerShootingAir || lazerShootingHit)
         { // if you are shooting 
             UpdateWidth(); // Update the width of the lazer for a warping effect
             if (shootingLazer == false) // if you just started shooting
+=======
+        UpdateWidth(); // Update the width of the lazer for a warping effect
+        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
+            if(shootingLazer == false) // if you just started shooting
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
             {
                 lazerRend.startWidth = minLazerWidth; // lazer starts small
                 lazerRend.endWidth = maxLazerWidth;
@@ -474,6 +483,7 @@ public class AbilityEffects : MonoBehaviour {
         }
         else // if you arent shooting, turn off the lazer
         {
+<<<<<<< HEAD
             if (lazerRend.startWidth > 0 || lazerRend.endWidth > 0)
             {
                 //lazerRend.SetPosition(0, LazerStartPoint.transform.position); // keeps lazer attached
@@ -486,8 +496,10 @@ public class AbilityEffects : MonoBehaviour {
                 shootingLazer = false;
                 lazerRend.enabled = false;
             }
+=======
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
             shootingLazer = false;
-
+            lazerRend.enabled = false;
         }
     }
     bool isbig = false;
