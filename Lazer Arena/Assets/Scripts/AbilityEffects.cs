@@ -56,8 +56,13 @@ public class AbilityEffects : MonoBehaviour {
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         SetWeaponType();
         lazerRend = LazerRenderer.GetComponent<LineRenderer>();
+=======
+
+        lazerRend = GetComponent<LineRenderer>();
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 
         lazerRend = GetComponent<LineRenderer>();
@@ -434,11 +439,17 @@ public class AbilityEffects : MonoBehaviour {
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         if (lazerShootingAir || lazerShootingHit)
         { // if you are shooting 
             UpdateWidth(); // Update the width of the lazer for a warping effect
             if (shootingLazer == false) // if you just started shooting
+=======
+        UpdateWidth(); // Update the width of the lazer for a warping effect
+        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
+            if(shootingLazer == false) // if you just started shooting
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
         UpdateWidth(); // Update the width of the lazer for a warping effect
         if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
@@ -496,6 +507,7 @@ public class AbilityEffects : MonoBehaviour {
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (lazerRend.startWidth > 0 || lazerRend.endWidth > 0)
             {
                 //lazerRend.SetPosition(0, LazerStartPoint.transform.position); // keeps lazer attached
@@ -508,6 +520,8 @@ public class AbilityEffects : MonoBehaviour {
                 shootingLazer = false;
                 lazerRend.enabled = false;
             }
+=======
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======

@@ -1713,11 +1713,14 @@ Prefab:
       propertyPath: minLazerWidth
       value: 0.33
 <<<<<<< HEAD
+<<<<<<< HEAD
       objectReference: {fileID: 0}
     - target: {fileID: 114994708353442346, guid: 1e7629e71a3a5784b90fc153abbccaad,
         type: 2}
       propertyPath: myClass
       value: 2
+=======
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
       objectReference: {fileID: 0}
@@ -2489,6 +2492,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1565716161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,6 +2566,8 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+=======
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
