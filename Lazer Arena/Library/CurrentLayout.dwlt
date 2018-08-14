@@ -48,6 +48,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
+=======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
@@ -178,6 +181,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
+=======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
@@ -511,7 +517,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: 00080000
+=======
+    m_SelectedIDs: 
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
     m_SelectedIDs: 
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
@@ -625,6 +635,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -635,11 +646,14 @@ MonoBehaviour:
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
+=======
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
     - Assets/Materials
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
   - Assets/Materials
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
@@ -651,6 +665,8 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders:
   - Assets/Materials
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
+=======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
@@ -663,8 +679,13 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: 48290000
     m_LastClickedID: 10568
+=======
+    m_SelectedIDs: 5c290000
+    m_LastClickedID: 10588
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
     m_SelectedIDs: 5c290000
     m_LastClickedID: 10588
@@ -713,7 +734,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b000000ca9a3bffffff7f
+=======
+    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
+>>>>>>> parent of 0f4e075... Added Lazer Fade Out
 =======
     m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
 >>>>>>> parent of 0f4e075... Added Lazer Fade Out
