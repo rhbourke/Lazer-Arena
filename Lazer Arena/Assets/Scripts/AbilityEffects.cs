@@ -29,9 +29,33 @@ public class AbilityEffects : MonoBehaviour {
     public float groundDist;
     float timeSinceLastLanding;
 
+
+    public GameObject LazerStartPoint;
+    public GameObject LazerEndPoint;
+    public bool lazerShootingHit;
+    public bool lazerShootingAir;
+    LineRenderer lazerRend;
+    public float lazerPulseSpeed;
+    public float maxLazerWidth;
+    public float minLazerWidth;
+
+    [HideInInspector]
+    public Vector3 LazerHitPoint;
+
+    [HideInInspector]
+    public Quaternion LazerHitRot;
+
     private void Start()
     {
+
+        lazerRend = GetComponent<LineRenderer>();
+        lazerRend.enabled = false;
+
         charController = GetComponent<CharacterControl>();
+
+        // We arent shooting the lazer at start
+        lazerShootingAir = false;
+        lazerShootingHit = false;
     }
 
     void Update () {
@@ -57,6 +81,9 @@ public class AbilityEffects : MonoBehaviour {
         // Then calls default movement effects, that may be altered by class
         if (movementEffects)
             MovementEffects();
+
+
+        LazerLineRender();
         }
 
         // IF DEAD
@@ -70,7 +97,6 @@ public class AbilityEffects : MonoBehaviour {
                 Instantiate(EffectManager._DeathExplosion, transform.position, rotation, transform);
             }
         }
-
     }
 
     
@@ -136,6 +162,7 @@ public class AbilityEffects : MonoBehaviour {
         }
     }
 
+    //Code below rotates through the jump sound the player uses
     int numJumps = 1;
 
     void JumpSound()
@@ -382,6 +409,60 @@ public class AbilityEffects : MonoBehaviour {
             MovementSrc.Play();
         yield return new WaitForSeconds(StartMoveSound.length);
         hasPlayedStart = true;
+    }
+    bool shootingLazer = false;
+    void LazerLineRender()
+    {
+        UpdateWidth(); // Update the width of the lazer for a warping effect
+        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
+            if(shootingLazer == false) // if you just started shooting
+            {
+                lazerRend.startWidth = minLazerWidth; // lazer starts small
+                lazerRend.endWidth = maxLazerWidth;
+            }
+            shootingLazer = true;
+            lazerRend.enabled = true;
+            lazerRend.SetPosition(0, LazerStartPoint.transform.position); // Sets start point of lazer
+
+            if (lazerShootingHit)
+            {
+                lazerRend.SetPosition(1, LazerHitPoint); // Sets end point of the lazer to be where it hit
+                GameObject Impact = Instantiate(EffectManager._LazerExplosion, LazerHitPoint, LazerHitRot); // Spawns impact effects from the lazer
+                Destroy(Impact, .6f);
+            }
+            else
+            {
+                lazerRend.SetPosition(1, LazerEndPoint.transform.position); // Sets end point of the lazer to be at the end point game object
+                LazerHitPoint = new Vector3(0, 0, 0); // Resets these values
+            }
+        }
+        else // if you arent shooting, turn off the lazer
+        {
+            shootingLazer = false;
+            lazerRend.enabled = false;
+        }
+    }
+    bool isbig = false;
+    void UpdateWidth()
+    {
+        if (lazerRend.startWidth < maxLazerWidth && !isbig) //If width < than max
+        {
+            //Grow
+            lazerRend.startWidth += lazerPulseSpeed * Time.deltaTime;
+            lazerRend.endWidth -= lazerPulseSpeed * Time.deltaTime;
+        }
+        else // if width > max
+        {
+            isbig = true;
+            //Shrink
+            if (lazerRend.startWidth > minLazerWidth)
+            {
+                lazerRend.startWidth -= lazerPulseSpeed * Time.deltaTime;
+                lazerRend.endWidth += lazerPulseSpeed * Time.deltaTime;
+            }
+            else
+                isbig = false;
+        }
     }
 }
 
