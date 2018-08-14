@@ -5,6 +5,13 @@ using UnityEngine;
 // The visual and audio effects carried by each player
 public class AbilityEffects : MonoBehaviour {
 
+    //The classes have different gun effects
+    //tank
+    bool machineGun = false;
+    bool pointerGun = false;
+
+
+
     public AudioSource MovementSrc;
     public AudioSource AbilitySrc;
     public AudioSource JumpSrc;
@@ -49,7 +56,7 @@ public class AbilityEffects : MonoBehaviour {
 
     private void Start()
     {
-
+        SetWeaponType();
         lazerRend = LazerRenderer.GetComponent<LineRenderer>();
         lazerRend.enabled = false;
 
@@ -409,14 +416,17 @@ public class AbilityEffects : MonoBehaviour {
         MovementSrc.clip = StartMoveSound;
         if(!MovementSrc.isPlaying)
             MovementSrc.Play();
-        yield return new WaitForSeconds(StartMoveSound.length);
+        yield return new WaitForSeconds(MovementSrc.clip.length);
         hasPlayedStart = true;
     }
     bool shootingLazer = false;
+    bool x = false;
+    float i = 0;
     void LazerLineRender()
     {
-         
-        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
+
+        if (lazerShootingAir || lazerShootingHit)
+        { // if you are shooting 
             UpdateWidth(); // Update the width of the lazer for a warping effect
             if (shootingLazer == false) // if you just started shooting
             {
@@ -424,7 +434,30 @@ public class AbilityEffects : MonoBehaviour {
                 lazerRend.endWidth = maxLazerWidth;
             }
             shootingLazer = true;
-            lazerRend.enabled = true;
+            if (pointerGun)
+            {
+                lazerRend.enabled = true;
+            }
+            if (machineGun)
+            {
+                if (i <= 1f && !x)
+                {
+                    i += 5f * Time.deltaTime;
+                    lazerRend.enabled = true;
+                }
+                else
+                {
+                    x = true;
+                    i -= 5f * Time.deltaTime;
+                    lazerRend.enabled = false;
+
+                }
+                if (x && i <= 0)
+                {
+                    x = false;
+                }
+
+            }
             lazerRend.SetPosition(0, LazerStartPoint.transform.position); // Sets start point of lazer
 
             if (lazerShootingHit)
@@ -441,13 +474,14 @@ public class AbilityEffects : MonoBehaviour {
         }
         else // if you arent shooting, turn off the lazer
         {
-            if (lazerRend.startWidth >0 || lazerRend.endWidth >0)
+            if (lazerRend.startWidth > 0 || lazerRend.endWidth > 0)
             {
-                lazerRend.SetPosition(0, LazerStartPoint.transform.position); // keeps lazer attached
-                lazerRend.SetPosition(1, LazerEndPoint.transform.position);
+                //lazerRend.SetPosition(0, LazerStartPoint.transform.position); // keeps lazer attached
+                //lazerRend.SetPosition(1, LazerEndPoint.transform.position);
                 lazerRend.startWidth -= lazerFadeSpeed * Time.deltaTime; // fades out the lazer
                 lazerRend.endWidth -= lazerFadeSpeed * Time.deltaTime;
-            } else
+            }
+            else
             {
                 shootingLazer = false;
                 lazerRend.enabled = false;
@@ -476,6 +510,19 @@ public class AbilityEffects : MonoBehaviour {
             }
             else
                 isbig = false;
+        }
+    }
+    void SetWeaponType()
+    {
+        if(GetComponent<CharacterControl>().isScout)
+        {
+            machineGun = false;
+            pointerGun = true;
+        }
+        if (GetComponent<CharacterControl>().isSupport)
+        {
+            machineGun = true;
+            pointerGun = false;
         }
     }
 }

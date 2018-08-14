@@ -1774,6 +1774,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114994708353442346, guid: 1e7629e71a3a5784b90fc153abbccaad,
+        type: 2}
+      propertyPath: myClass
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54213442736477700, guid: 1e7629e71a3a5784b90fc153abbccaad, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1e7629e71a3a5784b90fc153abbccaad, type: 2}
@@ -2550,7 +2555,6 @@ GameObject:
   - component: {fileID: 1565716162}
   - component: {fileID: 1565716165}
   - component: {fileID: 1565716164}
-  - component: {fileID: 1565716163}
   m_Layer: 9
   m_Name: ViewModelCamera
   m_TagString: Untagged
@@ -2571,13 +2575,6 @@ Transform:
   m_Father: {fileID: 2024139581}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1565716163
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1565716161}
-  m_Enabled: 1
 --- !u!124 &1565716164
 Behaviour:
   m_ObjectHideFlags: 0
