@@ -34,10 +34,12 @@ public class AbilityEffects : MonoBehaviour {
     public GameObject LazerEndPoint;
     public bool lazerShootingHit;
     public bool lazerShootingAir;
+    public GameObject LazerRenderer;
     LineRenderer lazerRend;
     public float lazerPulseSpeed;
     public float maxLazerWidth;
     public float minLazerWidth;
+    public float lazerFadeSpeed = .9f;
 
     [HideInInspector]
     public Vector3 LazerHitPoint;
@@ -48,7 +50,7 @@ public class AbilityEffects : MonoBehaviour {
     private void Start()
     {
 
-        lazerRend = GetComponent<LineRenderer>();
+        lazerRend = LazerRenderer.GetComponent<LineRenderer>();
         lazerRend.enabled = false;
 
         charController = GetComponent<CharacterControl>();
@@ -413,9 +415,10 @@ public class AbilityEffects : MonoBehaviour {
     bool shootingLazer = false;
     void LazerLineRender()
     {
-        UpdateWidth(); // Update the width of the lazer for a warping effect
+         
         if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
-            if(shootingLazer == false) // if you just started shooting
+            UpdateWidth(); // Update the width of the lazer for a warping effect
+            if (shootingLazer == false) // if you just started shooting
             {
                 lazerRend.startWidth = minLazerWidth; // lazer starts small
                 lazerRend.endWidth = maxLazerWidth;
@@ -438,8 +441,19 @@ public class AbilityEffects : MonoBehaviour {
         }
         else // if you arent shooting, turn off the lazer
         {
+            if (lazerRend.startWidth >0 || lazerRend.endWidth >0)
+            {
+                lazerRend.SetPosition(0, LazerStartPoint.transform.position); // keeps lazer attached
+                lazerRend.SetPosition(1, LazerEndPoint.transform.position);
+                lazerRend.startWidth -= lazerFadeSpeed * Time.deltaTime; // fades out the lazer
+                lazerRend.endWidth -= lazerFadeSpeed * Time.deltaTime;
+            } else
+            {
+                shootingLazer = false;
+                lazerRend.enabled = false;
+            }
             shootingLazer = false;
-            lazerRend.enabled = false;
+
         }
     }
     bool isbig = false;
