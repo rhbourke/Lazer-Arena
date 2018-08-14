@@ -87,11 +87,24 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 1920
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 21f2301ab65cd7b6175a70ec8843404eed8349d9
     height: 947
   m_MinSize: {x: 917, y: 442}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 121
+=======
+  controlID: 26
+=======
+    height: 20
+  m_MinSize: {x: 0, y: 0}
+  m_MaxSize: {x: 0, y: 0}
+>>>>>>> 0f4e07565507a3e853f50dd8852ce12966d88d01
+>>>>>>> 21f2301ab65cd7b6175a70ec8843404eed8349d9
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -586,15 +599,25 @@ MonoBehaviour:
     width: 906
     height: 465
   m_PersistentViewDataDictionary: {fileID: 0}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 21f2301ab65cd7b6175a70ec8843404eed8349d9
   m_SceneLighting: 1
   lastFramingTime: 0
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 0, y: 0, z: 0}
     speed: 2
     m_Value: {x: 0, y: 0, z: 0}
+=======
+    m_Target: {x: -12.3059845, y: 2.6618958, z: -3.198691}
+    speed: 2
+    m_Value: {x: -12.3059845, y: 2.6618958, z: -3.198691}
+>>>>>>> 21f2301ab65cd7b6175a70ec8843404eed8349d9
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -618,9 +641,15 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
     speed: 2
     m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+=======
+    m_Target: {x: -0.23949094, y: 0.73835456, z: -0.32867616, w: -0.53800434}
+    speed: 2
+    m_Value: {x: -0.23949094, y: 0.73835456, z: -0.32867616, w: -0.53800434}
+>>>>>>> 21f2301ab65cd7b6175a70ec8843404eed8349d9
   m_Size:
     m_Target: 10
     speed: 2
@@ -636,3 +665,15 @@ MonoBehaviour:
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
+<<<<<<< HEAD
+=======
+=======
+  m_ScrollPosition: {x: 0, y: 0}
+  m_InspectorMode: 0
+  m_PreviewResizer:
+    m_CachedPref: -147
+    m_ControlHash: -371814159
+    m_PrefName: Preview_InspectorPreview
+  m_PreviewWindow: {fileID: 0}
+>>>>>>> 0f4e07565507a3e853f50dd8852ce12966d88d01
+>>>>>>> 21f2301ab65cd7b6175a70ec8843404eed8349d9
