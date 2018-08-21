@@ -10,8 +10,6 @@ public class AbilityEffects : MonoBehaviour {
     bool machineGun = false;
     bool pointerGun = false;
 
-
-
     public AudioSource MovementSrc;
     public AudioSource AbilitySrc;
     public AudioSource JumpSrc;
@@ -33,18 +31,29 @@ public class AbilityEffects : MonoBehaviour {
     bool scoutBoosting;
 
     int numLands = 1;
-    public float groundDist;
+    float groundDist;
     float timeSinceLastLanding;
 
+    // Particles From Lazer
+    public GameObject EndSparks;
+    public GameObject HitSparks;
+    public GameObject StartSparks;
+    public GameObject HitSmoke;
+
+    // Lazers
+    public GameObject LazerRenderer;
+    public GameObject ThinLineRenderer; // GameOBJs Holding the Renderers
+    LineRenderer lazerRend;
+    LineRenderer thinLineRend;
 
     public GameObject LazerStartPoint;
     public GameObject LazerEndPoint;
+
     public bool lazerShootingHit;
+
     public bool lazerShootingAir;
-    LineRenderer lazerRend;
-    public float lazerPulseSpeed;
-    public float maxLazerWidth;
-    public float minLazerWidth;
+    
+    float lazerFadeSpeed = .9f;
 
     [HideInInspector]
     public Vector3 LazerHitPoint;
@@ -54,39 +63,9 @@ public class AbilityEffects : MonoBehaviour {
 
     private void Start()
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         SetWeaponType();
-        lazerRend = LazerRenderer.GetComponent<LineRenderer>();
-=======
 
-        lazerRend = GetComponent<LineRenderer>();
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-
-        lazerRend = GetComponent<LineRenderer>();
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-
-        lazerRend = GetComponent<LineRenderer>();
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-
-        lazerRend = GetComponent<LineRenderer>();
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-
-        lazerRend = GetComponent<LineRenderer>();
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-
-        lazerRend = GetComponent<LineRenderer>();
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-        lazerRend.enabled = false;
+        FetchLineRenderers();
 
         charController = GetComponent<CharacterControl>();
 
@@ -107,7 +86,7 @@ public class AbilityEffects : MonoBehaviour {
             living = true;
 
             // First calls class based abilities
-            if (charController.isScout)
+            if (GetComponent<CharacterControl>().isScout)
             {
                 if (ClassManager._SBoostEnabled)
                 {
@@ -427,16 +406,16 @@ public class AbilityEffects : MonoBehaviour {
     {
         if (charController.isScout){
             return EffectManager._ScoutEndMove;
-        }
-        return null;
+        } else return EffectManager._ScoutEndMove; // add other sounds here for different classes
+
     }
     public AudioClip StartMovingSound()
     {
-        if (charController.isScout)
+        if (GetComponent<CharacterControl>().isScout)
         {
             return EffectManager._ScoutStartMove;
-        }
-        return null;
+        } else
+            return EffectManager._ScoutStartMove; // add other sounds here for different classes
     }
     IEnumerator PlayStartMoveSound(AudioClip StartMoveSound)
     {
@@ -447,156 +426,37 @@ public class AbilityEffects : MonoBehaviour {
         yield return new WaitForSeconds(MovementSrc.clip.length);
         hasPlayedStart = true;
     }
+
     bool shootingLazer = false;
     bool x = false;
+    bool z = false;
+
     float i = 0;
+
     void LazerLineRender()
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+        UpdateWidth(lazerRend, .1f, 1.2f, .2f); // Update the width of the lazer for a warping effect
+        UpdateWidth(thinLineRend, .1f, .2f, .05f);
+        if (lazerShootingAir || lazerShootingHit) { // if you are shooting, turn ON the lazer & particles
 
-        if (lazerShootingAir || lazerShootingHit)
-        { // if you are shooting 
-            UpdateWidth(); // Update the width of the lazer for a warping effect
-            if (shootingLazer == false) // if you just started shooting
-=======
-        UpdateWidth(); // Update the width of the lazer for a warping effect
-        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
-            if(shootingLazer == false) // if you just started shooting
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-        UpdateWidth(); // Update the width of the lazer for a warping effect
-        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
-            if(shootingLazer == false) // if you just started shooting
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-        UpdateWidth(); // Update the width of the lazer for a warping effect
-        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
-            if(shootingLazer == false) // if you just started shooting
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-        UpdateWidth(); // Update the width of the lazer for a warping effect
-        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
-            if(shootingLazer == false) // if you just started shooting
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-        UpdateWidth(); // Update the width of the lazer for a warping effect
-        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
-            if(shootingLazer == false) // if you just started shooting
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-        UpdateWidth(); // Update the width of the lazer for a warping effect
-        if (lazerShootingAir || lazerShootingHit) { // if you are shooting 
-            if(shootingLazer == false) // if you just started shooting
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-            {
-                lazerRend.startWidth = minLazerWidth; // lazer starts small
-                lazerRend.endWidth = maxLazerWidth;
-            }
-            shootingLazer = true;
-            if (pointerGun)
-            {
-                lazerRend.enabled = true;
-            }
-            if (machineGun)
-            {
-                if (i <= 1f && !x)
-                {
-                    i += 5f * Time.deltaTime;
-                    lazerRend.enabled = true;
-                }
-                else
-                {
-                    x = true;
-                    i -= 5f * Time.deltaTime;
-                    lazerRend.enabled = false;
-
-                }
-                if (x && i <= 0)
-                {
-                    x = false;
-                }
-
-            }
-            lazerRend.SetPosition(0, LazerStartPoint.transform.position); // Sets start point of lazer
-
-            if (lazerShootingHit)
-            {
-                lazerRend.SetPosition(1, LazerHitPoint); // Sets end point of the lazer to be where it hit
-                GameObject Impact = Instantiate(EffectManager._LazerExplosion, LazerHitPoint, LazerHitRot); // Spawns impact effects from the lazer
-                Destroy(Impact, .6f);
-            }
-            else
-            {
-                lazerRend.SetPosition(1, LazerEndPoint.transform.position); // Sets end point of the lazer to be at the end point game object
-                LazerHitPoint = new Vector3(0, 0, 0); // Resets these values
-            }
+            LazerGraphicsOn(); 
         }
-        else // if you arent shooting, turn off the lazer
+        else // if you arent shooting, turn OFF the lazer & particles
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if (lazerRend.startWidth > 0 || lazerRend.endWidth > 0)
-            {
-                //lazerRend.SetPosition(0, LazerStartPoint.transform.position); // keeps lazer attached
-                //lazerRend.SetPosition(1, LazerEndPoint.transform.position);
-                lazerRend.startWidth -= lazerFadeSpeed * Time.deltaTime; // fades out the lazer
-                lazerRend.endWidth -= lazerFadeSpeed * Time.deltaTime;
-            }
-            else
-            {
-                shootingLazer = false;
-                lazerRend.enabled = false;
-            }
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-            shootingLazer = false;
-            lazerRend.enabled = false;
+            
+            LazerGraphicsOff();
         }
     }
+
     bool isbig = false;
-    void UpdateWidth()
-    {
-        if (lazerRend.startWidth < maxLazerWidth && !isbig) //If width < than max
-        {
-            //Grow
-            lazerRend.startWidth += lazerPulseSpeed * Time.deltaTime;
-            lazerRend.endWidth -= lazerPulseSpeed * Time.deltaTime;
-        }
-        else // if width > max
-        {
-            isbig = true;
-            //Shrink
-            if (lazerRend.startWidth > minLazerWidth)
-            {
-                lazerRend.startWidth -= lazerPulseSpeed * Time.deltaTime;
-                lazerRend.endWidth += lazerPulseSpeed * Time.deltaTime;
-            }
-            else
-                isbig = false;
-        }
-    }
+
+
+    
+
+
     void SetWeaponType()
     {
-        if(GetComponent<CharacterControl>().isScout)
+        if (GetComponent<CharacterControl>().isScout)
         {
             machineGun = false;
             pointerGun = true;
@@ -606,6 +466,200 @@ public class AbilityEffects : MonoBehaviour {
             machineGun = true;
             pointerGun = false;
         }
+        if (GetComponent<CharacterControl>().isTank)
+        {
+            machineGun = false; // Type of gun tank uses
+            pointerGun = true;
+        }
+    }
+
+
+    void FetchLineRenderers()
+    {
+        lazerRend = LazerRenderer.GetComponent<LineRenderer>();
+        lazerRend.enabled = false;
+
+        thinLineRend = ThinLineRenderer.GetComponent<LineRenderer>();
+        thinLineRend.enabled = false;
+    }
+
+
+    void FireRateGraphics(){
+        if (pointerGun)
+        {
+            lazerRend.enabled = true;
+            thinLineRend.enabled = true;
+        }
+        if (machineGun)
+        {
+            if (i <= 1f && !x)
+            {
+                i += 20f * Time.deltaTime;
+                lazerRend.enabled = true;
+                thinLineRend.enabled = true;
+            }
+            else
+            {
+                x = true;
+                i -= 20f * Time.deltaTime;
+                lazerRend.enabled = false;
+                thinLineRend.enabled = false;
+
+            }
+            if (x && i <= 0)
+            {
+                x = false;
+            }
+        }
+    }
+
+
+    bool GFXwasOn = false;
+
+    void LazerGraphicsOn()
+    {
+        GFXwasOn = true;
+
+        if (shootingLazer == false) // if you just started shooting
+        {
+            lazerRend.startWidth = 0; // lazer starts small
+            lazerRend.endWidth = 0f;
+            thinLineRend.startWidth = 0;
+            thinLineRend.endWidth = 0;
+        }
+        shootingLazer = true;
+
+        FireRateGraphics();
+
+        lazerRend.SetPosition(0, LazerStartPoint.transform.position); // Sets start point of lazer
+        thinLineRend.SetPosition(0, LazerStartPoint.transform.position);
+
+        StartSparks.transform.position = LazerStartPoint.transform.position;
+        StartSparks.SetActive(true);
+
+        if (lazerShootingHit) // If we are hitting something
+        {
+            lazerRend.SetPosition(1, LazerHitPoint); // Sets end point of the lazer to be where it hit
+            thinLineRend.SetPosition(1, LazerHitPoint);
+
+            if (z == false) // The first hit will spawn in particles
+            {
+                SpawnLazerHitParticles();
+                z = true;
+            }
+            z = true;
+            UpdateLazerHitParticlesPos(); // Update particle position to end of lazer
+
+        }
+        else 
+        {
+            z = false;
+            EndSparks.SetActive(false);
+            HitSparks.SetActive(false);
+            HitSmoke.SetActive(false);
+            if (lazerShootingAir)
+            {
+                lazerRend.SetPosition(1, LazerEndPoint.transform.position); // Sets end point of the lazer to be at the end point game object
+                thinLineRend.SetPosition(1, LazerEndPoint.transform.position);
+            }
+            LazerHitPoint = new Vector3(0, 0, 0); // Resets these values
+        }
+    }
+
+
+
+
+    void LazerGraphicsOff()
+    {
+        z = false;
+        if (GFXwasOn)
+        {
+            lazerRend.enabled = true;
+            thinLineRend.enabled = true;
+        }
+        GFXwasOn = false;
+        DisableLazerParticles();
+
+        
+
+        FadeOutLazer(lazerRend);
+        FadeOutLazer(thinLineRend);
+
+        shootingLazer = false;
+
+    }
+
+
+    void UpdateWidth(LineRenderer Rend, float Speed, float MaxWidth, float MinWidth)
+    {
+        if (Rend.startWidth <= MaxWidth && !isbig) //If width < than max
+        {
+            //Grow
+            Rend.startWidth += Speed * Time.deltaTime;
+            Rend.endWidth += Speed * Time.deltaTime;
+        }
+        else // if width > max
+        {
+            isbig = true;
+            //Shrink
+            if (Rend.startWidth >= MinWidth)
+            {
+                Rend.startWidth -= Speed * Time.deltaTime;
+                Rend.endWidth -= Speed * Time.deltaTime;
+            }
+            else
+                isbig = false;
+        }
+    }
+
+
+    void FadeOutLazer(LineRenderer lazer)
+    {
+        if (lazer.startWidth > 0 || lazer.endWidth > 0)
+        {
+            if (pointerGun)
+            {
+                lazer.SetPosition(0, LazerStartPoint.transform.position); // keeps lazer attached
+            }
+            lazer.startWidth -= lazerFadeSpeed * Time.deltaTime; // fades out the lazer
+            if (lazer.endWidth > 0)
+            {
+                lazer.endWidth -= lazerFadeSpeed * Time.deltaTime;
+            }
+        }
+        else
+        {
+            shootingLazer = false;
+            lazer.enabled = false;
+        }
+    }
+    void DisableLazerParticles()
+    {
+        EndSparks.SetActive(false);
+        HitSparks.SetActive(false);
+        HitSmoke.SetActive(false);
+        StartSparks.SetActive(false);
+    }
+    void UpdateLazerHitParticlesPos()
+    {
+        EndSparks.transform.position = LazerHitPoint; 
+        EndSparks.transform.rotation = LazerHitRot;
+        HitSparks.transform.position = LazerHitPoint;
+        HitSparks.transform.rotation = LazerHitRot;
+        HitSmoke.transform.position = LazerHitPoint;
+        HitSmoke.transform.rotation = LazerHitRot;
+    }
+    void SpawnLazerHitParticles()
+    {
+        EndSparks.transform.position = LazerHitPoint;
+        EndSparks.transform.rotation = LazerHitRot;
+        HitSparks.transform.position = LazerHitPoint;
+        HitSparks.transform.rotation = LazerHitRot;
+        HitSmoke.transform.position = LazerHitPoint;
+        HitSmoke.transform.rotation = LazerHitRot;
+        EndSparks.SetActive(true);
+        HitSparks.SetActive(true);
+        HitSmoke.SetActive(true);
     }
 }
 

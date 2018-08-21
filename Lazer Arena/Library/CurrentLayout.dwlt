@@ -13,34 +13,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43
-    width: 1920
-    height: 997
+    x: 8
+    y: 51
+    width: 1904
+    height: 981
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-  m_MinSize: {x: 950, y: 300}
-=======
   m_MinSize: {x: 950, y: 492}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -55,22 +35,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 3}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  - {fileID: 4}
-  - {fileID: 5}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
   - {fileID: 5}
   - {fileID: 4}
->>>>>>> parent of 2c1b51f... f
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1920
-    height: 997
+    width: 1904
+    height: 981
   m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
@@ -89,20 +61,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 1904
-    height: 981
-  m_MinSize: {x: 950, y: 300}
-  m_MaxSize: {x: 10000, y: 10000}
---- !u!114 &6
-=======
-    width: 1920
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
 --- !u!114 &4
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -110,129 +74,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_Script: {fileID: 12011, guid: 0000000000000000e000000000000000, type: 0}
-=======
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
   m_Script: {fileID: 12042, guid: 0000000000000000e000000000000000, type: 0}
->>>>>>> parent of 2c1b51f... f
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-    y: 0
-    width: 1904
-    height: 30
-  m_MinSize: {x: 0, y: 0}
-  m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: 2 by 3
---- !u!114 &7
-=======
-    y: 30
-=======
-    y: 977
->>>>>>> parent of 2c1b51f... f
-    width: 1920
-<<<<<<< HEAD
-    height: 947
-  m_MinSize: {x: 917, y: 442}
-  m_MaxSize: {x: 22012, y: 10021}
-  vertical: 0
-  controlID: 26
-=======
-    height: 20
-  m_MinSize: {x: 0, y: 0}
-  m_MaxSize: {x: 0, y: 0}
->>>>>>> 0f4e07565507a3e853f50dd8852ce12966d88d01
---- !u!114 &5
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_Children:
-  - {fileID: 9}
-  - {fileID: 10}
-  - {fileID: 11}
-  - {fileID: 12}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 30
-<<<<<<< HEAD
-    width: 1904
-    height: 931
-=======
-    width: 1920
-    height: 947
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-  m_MinSize: {x: 917, y: 442}
-  m_MaxSize: {x: 22012, y: 10021}
-  vertical: 0
-  controlID: 229
---- !u!114 &8
-=======
-  m_Children: []
-=======
-  m_Children:
-  - {fileID: 6}
-  - {fileID: 9}
-  - {fileID: 10}
-  - {fileID: 11}
->>>>>>> parent of 2c1b51f... f
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 30
-    width: 1920
-    height: 947
-  m_MinSize: {x: 911, y: 442}
-  m_MaxSize: {x: 22006, y: 10021}
-  vertical: 0
-  controlID: 9
---- !u!114 &6
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< HEAD
   m_Children: []
   m_Position:
     serializedVersion: 2
@@ -242,8 +86,43 @@ MonoBehaviour:
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
---- !u!114 &9
-=======
+--- !u!114 &5
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 6}
+  - {fileID: 9}
+  - {fileID: 10}
+  - {fileID: 11}
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 30
+    width: 1904
+    height: 931
+  m_MinSize: {x: 917, y: 442}
+  m_MaxSize: {x: 22012, y: 10021}
+  vertical: 0
+  controlID: 73
+--- !u!114 &6
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 7}
   - {fileID: 8}
@@ -251,14 +130,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 907
-    height: 947
+    width: 899
+    height: 931
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
   controlID: 10
 --- !u!114 &7
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -274,36 +152,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    width: 900
-    height: 931
-  m_MinSize: {x: 202, y: 442}
-  m_MaxSize: {x: 4002, y: 8042}
-  vertical: 1
-  controlID: 230
---- !u!114 &10
-=======
-    width: 907
-    height: 486
+    width: 899
+    height: 478
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 13}
-=======
-    width: 308
-    height: 947
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
-  m_ActualView: {fileID: 12}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-    width: 907
-    height: 486
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 13}
->>>>>>> parent of 2c1b51f... f
   m_Panes:
   - {fileID: 13}
   m_Selected: 0
@@ -322,48 +175,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    x: 900
-    y: 0
-    width: 305
-    height: 931
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 16}
-=======
-=======
->>>>>>> parent of 2c1b51f... f
     x: 0
-    y: 486
-    width: 907
-    height: 461
-<<<<<<< HEAD
+    y: 478
+    width: 899
+    height: 453
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 12}
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-  m_Panes:
-  - {fileID: 16}
-=======
-    x: 1216
-    y: 0
-    width: 275
-    height: 947
-  m_MinSize: {x: 234, y: 271}
-  m_MaxSize: {x: 10004, y: 10021}
-  m_ActualView: {fileID: 14}
-  m_Panes:
-  - {fileID: 14}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
->>>>>>> parent of 2c1b51f... f
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &9
@@ -380,43 +200,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-    x: 1205
+    x: 899
     y: 0
-<<<<<<< HEAD
-    width: 273
+    width: 305
     height: 931
-  m_MinSize: {x: 234, y: 271}
-  m_MaxSize: {x: 10004, y: 10021}
-  m_ActualView: {fileID: 18}
-=======
-    width: 308
-    height: 947
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 14}
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
   m_Panes:
-  - {fileID: 18}
-=======
-    x: 1491
-=======
-    x: 907
->>>>>>> parent of 2c1b51f... f
-    y: 0
-    width: 308
-    height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
-  m_Panes:
-<<<<<<< HEAD
-  - {fileID: 13}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
   - {fileID: 14}
->>>>>>> parent of 2c1b51f... f
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &10
@@ -433,35 +225,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-    x: 1478
+    x: 1204
     y: 0
-    width: 426
+    width: 273
     height: 931
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 17}
-  m_Panes:
-  - {fileID: 17}
-=======
-    x: 0
-=======
-    x: 1215
->>>>>>> parent of 2c1b51f... f
-    y: 0
-    width: 275
-    height: 947
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 15}
   m_Panes:
-<<<<<<< HEAD
-  - {fileID: 16}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
   - {fileID: 15}
->>>>>>> parent of 2c1b51f... f
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &11
@@ -478,71 +250,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 0
-<<<<<<< HEAD
+    x: 1477
     y: 0
-<<<<<<< HEAD
-    width: 900
-    height: 478
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 20}
-=======
-    width: 430
-    height: 947
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 16}
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-  m_Panes:
-  - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &14
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 478
-    width: 900
-    height: 453
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 19}
-  m_Panes:
-  - {fileID: 19}
-=======
-    y: 486
-    width: 908
-    height: 461
-  m_MinSize: {x: 200, y: 200}
-=======
-    x: 1490
-    y: 0
-    width: 430
-    height: 947
+    width: 427
+    height: 931
   m_MinSize: {x: 275, y: 50}
->>>>>>> parent of 2c1b51f... f
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
-<<<<<<< HEAD
-  - {fileID: 15}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
   - {fileID: 16}
->>>>>>> parent of 2c1b51f... f
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &12
@@ -567,10 +283,10 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 0
+    x: 8
     y: 578
-    width: 905
-    height: 440
+    width: 897
+    height: 432
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
@@ -580,10 +296,10 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-    m_HBaseRangeMin: -452.5
-    m_HBaseRangeMax: 452.5
-    m_VBaseRangeMin: -211.5
-    m_VBaseRangeMax: 211.5
+    m_HBaseRangeMin: -448.5
+    m_HBaseRangeMax: 448.5
+    m_VBaseRangeMin: -207.5
+    m_VBaseRangeMax: 207.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -600,25 +316,25 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-      width: 905
-      height: 423
+      width: 897
+      height: 415
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 452.5, y: 211.5}
+    m_Translation: {x: 448.5, y: 207.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -452.5
-      y: -211.5
-      width: 905
-      height: 423
+      x: -448.5
+      y: -207.5
+      width: 897
+      height: 415
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 905, y: 440}
+  m_LastWindowPixelSize: {x: 897, y: 432}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -644,20 +360,20 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 92
-    width: 905
-    height: 465
+    x: 8
+    y: 100
+    width: 897
+    height: 457
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 2157.1255307082706
+  lastFramingTime: 574.4421039126255
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -16.478323, y: 1.2433113, z: -0.3547163}
+    m_Target: {x: -66.20098, y: 5.169077, z: -20.504354}
     speed: 2
-    m_Value: {x: -16.478323, y: 1.2433113, z: -0.3547163}
+    m_Value: {x: -66.20098, y: 5.169077, z: -20.504354}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -681,13 +397,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.0071852845, y: -0.026649037, z: -0.00019161978, w: 0.99961907}
+    m_Target: {x: -0.03946722, y: -0.72357976, z: 0.041515972, w: -0.6878599}
     speed: 2
-    m_Value: {x: -0.0071852845, y: -0.026649037, z: -0.00019161978, w: 0.99961907}
+    m_Value: {x: -0.03946722, y: -0.72357976, z: 0.041515972, w: -0.6878599}
   m_Size:
-    m_Target: 4.287588
+    m_Target: 6.2824054
     speed: 2
-    m_Value: 4.287588
+    m_Value: 6.2824054
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -721,62 +437,16 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 910
-<<<<<<< HEAD
+    x: 909
     y: 100
     width: 301
     height: 910
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_SelectedIDs: 00080000
-=======
     m_SelectedIDs: 
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
     m_LastClickedID: 0
     m_ExpandedIDs: 9efbffff00000000
-=======
-=======
-    x: 909
->>>>>>> parent of 2c1b51f... f
-    y: 92
-    width: 304
-    height: 926
-  m_PersistentViewDataDictionary: {fileID: 0}
-  m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-<<<<<<< HEAD
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 00000000
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-    m_SelectedIDs: 1e2d0000
-    m_LastClickedID: 11550
-    m_ExpandedIDs: 1efbffff24fbffff98fbffff00000000dc2c00001a2d00001e2d0000822d0000ac2d0000c22d0000
->>>>>>> parent of 2c1b51f... f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -799,64 +469,7 @@ MonoBehaviour:
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!114 &17
-=======
---- !u!114 &13
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12019, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AutoRepaintOnSceneChange: 0
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Inspector
-    m_Image: {fileID: -6905738622615590433, guid: 0000000000000000d000000000000000,
-      type: 0}
-    m_Tooltip: 
-  m_DepthBufferBits: 0
-  m_Pos:
-    serializedVersion: 2
-<<<<<<< HEAD
-    x: 1488
-    y: 100
-    width: 424
-    height: 910
-  m_PersistentViewDataDictionary: {fileID: 0}
-  m_ScrollPosition: {x: 0, y: 0}
-  m_InspectorMode: 0
-  m_PreviewResizer:
-    m_CachedPref: -500
-    m_ControlHash: -371814159
-    m_PrefName: Preview_InspectorPreview
-  m_PreviewWindow: {fileID: 0}
---- !u!114 &18
-=======
-    x: 1493
-    y: 92
-    width: 427
-    height: 926
-  m_ScrollPosition: {x: 0, y: 0}
-  m_InspectorMode: 0
-  m_PreviewResizer:
-    m_CachedPref: -160
-    m_ControlHash: -371814159
-    m_PrefName: Preview_InspectorPreview
-  m_PreviewWindow: {fileID: 0}
---- !u!114 &14
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
 --- !u!114 &15
->>>>>>> parent of 2c1b51f... f
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -878,26 +491,11 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-    x: 1215
+    x: 1214
     y: 100
     width: 269
     height: 910
   m_PersistentViewDataDictionary: {fileID: 0}
-=======
-    x: 1218
-    y: 92
-    width: 271
-    height: 926
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-    x: 1217
-    y: 92
-    width: 271
-    height: 926
-  m_PersistentViewDataDictionary: {fileID: 0}
->>>>>>> parent of 2c1b51f... f
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -910,117 +508,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - Assets/Scripts
+    - Assets/startisland_collection/prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
-=======
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-    - Assets/Materials
-  m_ViewMode: 1
-  m_StartGridSize: 64
-  m_LastFolders:
-  - Assets/Materials
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    - Assets/Materials
-  m_ViewMode: 1
-  m_StartGridSize: 64
-  m_LastFolders:
-  - Assets/Materials
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    - Assets
-  m_ViewMode: 1
-  m_StartGridSize: 64
-  m_LastFolders:
-  - Assets
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-    - Assets/ParticleSystems/Lazers
-  m_ViewMode: 1
-  m_StartGridSize: 64
-  m_LastFolders:
-  - Assets/ParticleSystems/Lazers
->>>>>>> parent of 2c1b51f... f
+  - Assets/startisland_collection/prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\bfros\Documents\Lazer-Arena\Lazer Arena
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_SelectedIDs: 48290000
-    m_LastClickedID: 10568
-=======
-    m_SelectedIDs: 5c290000
-    m_LastClickedID: 10588
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 5c290000
-    m_LastClickedID: 10588
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 5c290000
-    m_LastClickedID: 10588
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 5c290000
-    m_LastClickedID: 10588
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 5c290000
-    m_LastClickedID: 10588
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_SelectedIDs: 5c290000
-    m_LastClickedID: 10588
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b000000ca9a3bffffff7f
-=======
-    m_SelectedIDs: a0360000
-    m_LastClickedID: 13984
-    m_ExpandedIDs: 00000000a0360000b6360000be360000da36000086370000dc37000000ca9a3bffffff7f
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-    m_SelectedIDs: 962b0000
-    m_LastClickedID: 11158
-    m_ExpandedIDs: 00000000a4280000dc280000e628000028290000062b0000fc2b000000ca9a3bffffff7f
->>>>>>> parent of 2c1b51f... f
+    m_SelectedIDs: 9a320000
+    m_LastClickedID: 12954
+    m_ExpandedIDs: 00000000a0280000de280000e828000032290000c4290000182a0000742b00008a2b0000442c00009232000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1048,39 +548,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b000000ca9a3bffffff7f
-=======
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_ExpandedIDs: 00000000a0280000d8280000e228000024290000022b0000f82b0000
->>>>>>> parent of 0f4e075... Added Lazer Fade Out
-=======
-    m_ExpandedIDs: 00000000a0360000b6360000be360000da36000086370000dc37000000ca9a3bffffff7f
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-    m_ExpandedIDs: 00000000a4280000dc280000e628000028290000062b0000fc2b0000
->>>>>>> parent of 2c1b51f... f
+    m_ExpandedIDs: 00000000a0280000de280000e828000032290000c4290000182a0000742b00008a2b0000442c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1108,7 +576,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 
+    m_ExpandedInstanceIDs: 782f00007e2b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1134,179 +602,8 @@ MonoBehaviour:
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
-<<<<<<< HEAD
-  m_DirectoriesAreaWidth: 115
-<<<<<<< HEAD
---- !u!114 &19
-=======
---- !u!114 &15
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AutoRepaintOnSceneChange: 1
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Game
-    m_Image: {fileID: -2087823869225018852, guid: 0000000000000000d000000000000000,
-      type: 0}
-    m_Tooltip: 
-  m_DepthBufferBits: 32
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 578
-    width: 906
-    height: 440
-  m_MaximizeOnPlay: 0
-  m_Gizmos: 0
-  m_Stats: 0
-  m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  m_TargetDisplay: 0
-  m_ZoomArea:
-    m_HRangeLocked: 0
-    m_VRangeLocked: 0
-    m_HBaseRangeMin: -453
-    m_HBaseRangeMax: 453
-    m_VBaseRangeMin: -211.5
-    m_VBaseRangeMax: 211.5
-    m_HAllowExceedBaseRangeMin: 1
-    m_HAllowExceedBaseRangeMax: 1
-    m_VAllowExceedBaseRangeMin: 1
-    m_VAllowExceedBaseRangeMax: 1
-    m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
-    m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
-    m_EnableSliderZoom: 0
-    m_UniformScale: 1
-    m_UpDirection: 1
-    m_DrawArea:
-      serializedVersion: 2
-      x: 0
-      y: 17
-      width: 906
-      height: 423
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 453, y: 211.5}
-    m_MarginLeft: 0
-    m_MarginRight: 0
-    m_MarginTop: 0
-    m_MarginBottom: 0
-    m_LastShownAreaInsideMargins:
-      serializedVersion: 2
-      x: -453
-      y: -211.5
-      width: 906
-      height: 423
-    m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_TargetTexture: {fileID: 0}
-  m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 906, y: 440}
-  m_ClearInEditMode: 1
-  m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000100000100
-=======
   m_DirectoriesAreaWidth: 109
->>>>>>> parent of 2c1b51f... f
 --- !u!114 &16
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-<<<<<<< HEAD
-  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
-=======
-  m_Script: {fileID: 12013, guid: 0000000000000000e000000000000000, type: 0}
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AutoRepaintOnSceneChange: 1
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-<<<<<<< HEAD
-    m_Text: Game
-    m_Image: {fileID: -2087823869225018852, guid: 0000000000000000d000000000000000,
-=======
-    m_Text: Scene
-    m_Image: {fileID: 2318424515335265636, guid: 0000000000000000d000000000000000,
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-      type: 0}
-    m_Tooltip: 
-  m_DepthBufferBits: 32
-  m_Pos:
-    serializedVersion: 2
-<<<<<<< HEAD
-    x: 8
-    y: 578
-    width: 898
-    height: 432
-  m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 0
-  m_Gizmos: 0
-  m_Stats: 0
-  m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  m_TargetDisplay: 0
-  m_ZoomArea:
-    m_HRangeLocked: 0
-    m_VRangeLocked: 0
-    m_HBaseRangeMin: -449
-    m_HBaseRangeMax: 449
-    m_VBaseRangeMin: -207.5
-    m_VBaseRangeMax: 207.5
-    m_HAllowExceedBaseRangeMin: 1
-    m_HAllowExceedBaseRangeMax: 1
-    m_VAllowExceedBaseRangeMin: 1
-    m_VAllowExceedBaseRangeMax: 1
-    m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
-    m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
-    m_EnableSliderZoom: 0
-    m_UniformScale: 1
-    m_UpDirection: 1
-    m_DrawArea:
-      serializedVersion: 2
-      x: 0
-      y: 17
-      width: 898
-      height: 415
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 449, y: 207.5}
-    m_MarginLeft: 0
-    m_MarginRight: 0
-    m_MarginTop: 0
-    m_MarginBottom: 0
-    m_LastShownAreaInsideMargins:
-      serializedVersion: 2
-      x: -449
-      y: -207.5
-      width: 898
-      height: 415
-    m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_TargetTexture: {fileID: 0}
-  m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 898, y: 432}
-  m_ClearInEditMode: 1
-  m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000100000100
---- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -1328,77 +625,11 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 8
+    x: 1487
     y: 100
-    width: 898
-    height: 457
+    width: 425
+    height: 910
   m_PersistentViewDataDictionary: {fileID: 0}
-=======
-    x: 0
-    y: 92
-    width: 906
-    height: 465
->>>>>>> parent of 650ee41... Merge branch 'master' of https://github.com/rhbourke/Lazer-Arena
-=======
-    x: 1492
-    y: 92
-    width: 428
-    height: 926
-  m_PersistentViewDataDictionary: {fileID: 0}
-<<<<<<< HEAD
->>>>>>> parent of 2c1b51f... f
-  m_SceneLighting: 1
-  lastFramingTime: 0
-  m_2DMode: 0
-  m_isRotationLocked: 0
-  m_AudioPlay: 0
-  m_Position:
-    m_Target: {x: -12.3059845, y: 2.6618958, z: -3.198691}
-    speed: 2
-    m_Value: {x: -12.3059845, y: 2.6618958, z: -3.198691}
-  m_RenderMode: 0
-  m_ValidateTrueMetals: 0
-  m_SceneViewState:
-    showFog: 1
-    showMaterialUpdate: 0
-    showSkybox: 1
-    showFlares: 1
-    showImageEffects: 1
-    showParticleSystems: 1
-  grid:
-    xGrid:
-      m_Target: 0
-      speed: 2
-      m_Value: 0
-    yGrid:
-      m_Target: 0
-      speed: 2
-      m_Value: 0
-    zGrid:
-      m_Target: 0
-      speed: 2
-      m_Value: 0
-  m_Rotation:
-    m_Target: {x: -0.23949094, y: 0.73835456, z: -0.32867616, w: -0.53800434}
-    speed: 2
-    m_Value: {x: -0.23949094, y: 0.73835456, z: -0.32867616, w: -0.53800434}
-  m_Size:
-    m_Target: 10
-    speed: 2
-    m_Value: 10
-  m_Ortho:
-    m_Target: 0
-    speed: 2
-    m_Value: 0
-  m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
-  m_LastSceneViewOrtho: 0
-  m_ReplacementShader: {fileID: 0}
-  m_ReplacementString: 
-  m_LastLockedObject: {fileID: 0}
-  m_ViewIsLockedToObject: 0
-=======
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
@@ -1406,4 +637,3 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
->>>>>>> 0f4e07565507a3e853f50dd8852ce12966d88d01

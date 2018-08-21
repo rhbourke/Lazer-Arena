@@ -21,8 +21,13 @@ public class BreakableObject : MonoBehaviour {
         }
         Quaternion rotation = Quaternion.identity;
         rotation.eulerAngles = new Vector3(0, 0, 0);
-        Instantiate(EffectManager._DeathExplosion, transform.position, rotation, transform);
-        this.gameObject.GetComponent<Renderer>().enabled = false;
+        Instantiate(EffectManager._DeathExplosion, transform.position, rotation);
+        if (this.gameObject.GetComponent<Renderer>() != null)
+        {
+            this.gameObject.GetComponent<Renderer>().enabled = false;
+        }
+        else
+            this.gameObject.SetActive(false);
         this.gameObject.GetComponent<Collider>().enabled = false;
         Destroy(this.gameObject, 2f);
     }

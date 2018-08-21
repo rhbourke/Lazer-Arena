@@ -74,14 +74,17 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]
     public bool speedBoosted = false;
 
-
-    void Start()
+    private void Awake()
     {
         // Check what class we are
         UpdateClass();
+    }
+    void Start()
+    {
+
 
         // Set object references and defaults
-        PlayerCam = gameObject.GetComponentInChildren<Camera>();
+        PlayerCam = GetComponentInChildren<Camera>();
         startFOV = PlayerCam.fieldOfView;
         speedMultiplier = personalSpeed;
         charControl = GetComponent<CharacterController>();

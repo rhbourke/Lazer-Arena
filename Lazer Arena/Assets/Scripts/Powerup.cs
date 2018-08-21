@@ -63,7 +63,8 @@ public class Powerup : MonoBehaviour {
         }
     }
 	
-	void Update () { 
+	void Update () {
+        
         if (!active)
         {
             // Disable when used
@@ -142,7 +143,7 @@ public class Powerup : MonoBehaviour {
     void DecreaseFOV()
     {
         if (charController.PlayerCam.fieldOfView > normalFOV )
-            charController.PlayerCam.fieldOfView += .5f * Time.fixedDeltaTime * FOVTransitionTime * 100;
+            charController.PlayerCam.fieldOfView -= .5f * Time.fixedDeltaTime * FOVTransitionTime * 100;
 
         if (charController.PlayerCam.fieldOfView <= normalFOV)
         {
